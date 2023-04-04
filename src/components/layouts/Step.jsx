@@ -20,7 +20,8 @@ const Step = () => {
         >
           <div className="row gx-5">
             <div className="">
-              <div className="row gx-5 border p-5 rounded-5 row-cols-1 row-cols-md-2">
+              <h4 className="text-center fw-bold mb-5 text-uppercase">Dapatkan tiketmu sekarang juga!</h4>
+              <div className="row gx-5 border p-5 rounded-5 row-cols-1 row-cols-md-2 shadow-lg">
                 <div className="col mb-5 h-100">
                   <div className="mb-3">
                     <BsFillPersonPlusFill size={30} />

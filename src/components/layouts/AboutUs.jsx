@@ -3,10 +3,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import banner from "../../assets/banner.jpg";
 
-const Onboard = () => {
+const AboutUs = () => {
   AOS.init();
   return (
-    <div className="">
+    <div className="bg-light">
       <div className="about-section paddingTB60">
         <div className="container">
           <div className="row">
@@ -16,8 +16,8 @@ const Onboard = () => {
                 data-aos="fade-up"
                 data-aos-duration="800"
               >
-                <h1>
-                  Tentang <span className="text-danger">Kami</span>
+                <h1 className="">
+                  Tentang <span className="gradient-text">Kami</span>
                 </h1>
                 <h3>Laju Jaya Tour & Travel</h3>
                 <p className="about-paddingB">
@@ -37,7 +37,7 @@ const Onboard = () => {
             <div className="col-md-5 col-sm-6">
               <div
                 className="about-img"
-                data-aos="fade-up"
+                data-aos="fade-down"
                 data-aos-duration="800"
               >
                 <img src={banner} className="rounded shadow" width={350} />
@@ -50,4 +50,4 @@ const Onboard = () => {
   );
 };
 
-export default Onboard;
+export default AboutUs;

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../components/layouts/Footer";
 import Navbar from "../components/layouts/Navbar";
-import banner from "../assets/banner.png";
+import banner from "../assets/banner.svg";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
+import { BsFillEyeFill, BsFillEyeSlashFill, BsFillPersonFill, BsFillLockFill } from "react-icons/bs";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { BsFillPersonFill, BsFillLockFill } from "react-icons/bs";
 
 const LoginUser = () => {
   const navigate = useNavigate();
@@ -193,7 +192,7 @@ const LoginUser = () => {
                     data-aos="fade-left"
                     data-aos-duration="800"
                     >
-                    <img src={banner} alt="" width={400} />
+                    <img src={banner} alt="" width={450} />
                     </div>
                   </div>
                 </div>
