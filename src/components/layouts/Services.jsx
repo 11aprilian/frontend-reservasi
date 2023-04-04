@@ -12,7 +12,7 @@ const Services = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
-              <img src={services} className="img-fluid" alt="" />
+              <img src={services} className="" width={400} alt="" />
             </div>
 
             <div className="col-lg-6 d-flex flex-column justify-content-center">
@@ -39,7 +39,7 @@ const Services = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="fw-bolder">Cepat</h4>
+                  <h4 className="fw-bolder">CEPAT</h4>
                   <p className="description">
                     Tidak perlu konfirmasi dari kami! Kamu hanya perlu mengisi
                     form yang disediakan oleh LajuJaya dan melakukan pembayaran.

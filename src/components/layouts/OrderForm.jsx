@@ -227,7 +227,7 @@ const OrderForm = () => {
                             return (
                               <option key={jadwal.id} jadwal={jadwal.jam}>
                                 {jadwal.id}
-                                {"). Jam Berangkat Pukul "}
+                                {" ). Jam Berangkat Pukul "}
                                 {jadwal.jam}
                               </option>
                             );

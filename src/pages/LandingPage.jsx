@@ -11,7 +11,7 @@ const LandingPage = () => {
   const user = localStorage.getItem("authToken");
   if (user) {
     return (
-      <div className="gradient-custom ">
+      <div className="gradient-custom min-vh-100">
         <Navbar />
         <LoggedIn />
         <Step />
@@ -21,7 +21,7 @@ const LandingPage = () => {
     );
   } else {
     return (
-      <div className="gradient-custom">
+      <div className="gradient-custom min-vh-100">
         <Navbar />
         <Hero />
         <Onboard />

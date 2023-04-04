@@ -5,7 +5,7 @@ import 'aos/dist/aos.css';
 const Hero = () => {
   AOS.init();
   return (
-    <div className="hero-image container-fluid min-vh-100">
+    <div className="hero-image container-fluid ">
       <div className="p-5 text-center" data-aos="fade-up" data-aos-duration="800">
         <div className="mask mt-5">
           <div className="d-flex justify-content-center align-items-center h-100">

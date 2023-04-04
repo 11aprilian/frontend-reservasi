@@ -5,7 +5,6 @@ import RuteTravel from "./pages/RuteTravel";
 import RegisterUser from "./pages/RegisterUser";
 import LoginUser from "./pages/LoginUser";
 import OrderPage from "./pages/OrderPage";
-import HomePage from "./pages/HomePage";
 import Invoice from "./pages/Invoice";
 import OrderHistory from "./pages/OrderHistory";
 
@@ -19,7 +18,6 @@ function App() {
         <Route path="/register" element={<RegisterUser/>}/>
         <Route path="/login" element={<LoginUser/>}/>
         <Route path="/reservasi" element={<OrderPage/>}/>
-        <Route path="/home" element={<HomePage/>}/>
         <Route path="/reservasi/invoice" element={<Invoice/>}/>
         <Route path="/history" element={<OrderHistory/>}/>
       </Routes>

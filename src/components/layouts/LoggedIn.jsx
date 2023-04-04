@@ -4,8 +4,9 @@ import welcome from "../../assets/welcome.png";
 
 const LoggedIn = () => {
   AOS.init();
+  const user = localStorage.getItem("userName").replace(/["]/g, "");
   return (
-    <div className="min-vh-100">
+    <div className="">
       <div className="container">
         <div className="row gx-5 mt-3 align-items-center justify-content-center">
           <div className="col-lg-8 col-xl-7 col-xxl-6">
@@ -15,12 +16,12 @@ const LoggedIn = () => {
               data-aos-duration="800"
             >
               <h1 className="text-uppercase fw-bolder mb-5">
-                Selamat Datang di Web Reservasi{" "}
+                Halo, <span>{user}</span>! Selamat Datang di Web Reservasi{" "}
                 <span className="gradient-text"> LajuJaya!</span>
               </h1>
               <p className="my-5">
                 Ayo reservasi perjalananmu di Laju Jaya Tour & Travel!
-                <br/>
+                <br />
                 Dan permudah proses transaksi travelmu disini!
               </p>
               <div className="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
@@ -40,7 +41,7 @@ const LoggedIn = () => {
           >
             <img
               className=" rounded-3 my-5"
-              height={430}
+              height={420}
               src={welcome}
               alt="..."
             />

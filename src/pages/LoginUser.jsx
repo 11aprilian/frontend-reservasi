@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../components/layouts/Footer";
-import Navbar from "../components/layouts/Navbar";
 import banner from "../assets/banner.svg";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
