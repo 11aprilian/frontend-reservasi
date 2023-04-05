@@ -24,13 +24,13 @@ const Hero = () => {
                 Dan permudah rencana perjalanan anda dengan memesan tiket secara
                 online di LajuJaya.
               </p>
-              <a
+              <button
                 className="btn btn-danger mx-2 mt-3 col-md-3 shadow"
                 href="/register"
                 role="button"
               >
                 Daftar Sekarang
-              </a>
+              </button>
             </div>
           </div>
         </div>
