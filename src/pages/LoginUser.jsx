@@ -11,10 +11,11 @@ import {
 } from "react-icons/bs";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { validate, res } from "react-email-validator";
 
 const LoginUser = () => {
   const navigate = useNavigate();
-  const [username, setUserame] = useState("");
+  const [unameOrEmail, setUnameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [change, setChange] = useState("password");
 
@@ -26,16 +27,16 @@ const LoginUser = () => {
     });
   };
 
-  const getpassword = () => {
+  const getPassword = () => {
     setChange("text");
     console.log(change);
   };
 
-  const hidepassword = () => {
+  const hidePassword = () => {
     setChange("password");
   };
 
-  const LoginHandle = async () => {
+  const isEmail = async () => {
     try {
       let user = await fetch("http://localhost:3050/user/login", {
         method: "POST",
@@ -43,7 +44,7 @@ const LoginUser = () => {
           Accept: "*/*",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username: username, password: password }),
+        body: JSON.stringify({ email: unameOrEmail, password: password }),
       });
 
       user = await user.json();
@@ -67,9 +68,11 @@ const LoginUser = () => {
           userData = await userData.json();
           const userId = userData.data.id;
           const userName = await userData.data.username;
+          const userEmail = await userData.data.email;
 
           localStorage.setItem("userId", JSON.stringify(userId));
           localStorage.setItem("userName", JSON.stringify(userName));
+          localStorage.setItem("userEmail", JSON.stringify(userEmail));
         } catch (error) {
           loginFailed();
         }
@@ -84,6 +87,69 @@ const LoginUser = () => {
     } catch (error) {
       console.log(error);
       loginFailed();
+    }
+  };
+
+  const isUsername = async () => {
+    try {
+      let user = await fetch("http://localhost:3050/user/login", {
+        method: "POST",
+        headers: {
+          Accept: "*/*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: unameOrEmail, password: password }),
+      });
+
+      user = await user.json();
+      const userID = user.id;
+      console.log(user);
+      if (user.token) {
+        localStorage.setItem("authToken", user.token);
+
+        try {
+          let userData = await fetch(
+            "http://localhost:3050/user/profile/" + userID,
+            {
+              method: "GET",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                authorization: localStorage.getItem("authToken"),
+              },
+            }
+          );
+          userData = await userData.json();
+          const userId = userData.data.id;
+          const userName = await userData.data.username;
+          const userEmail = await userData.data.email;
+
+          localStorage.setItem("userId", JSON.stringify(userId));
+          localStorage.setItem("userName", JSON.stringify(userName));
+          localStorage.setItem("userEmail", JSON.stringify(userEmail));
+        } catch (error) {
+          loginFailed();
+        }
+        await Swal.fire({
+          text: user.message,
+          icon: "success",
+        });
+        navigate("/");
+      } else {
+        throw "Gagal Login!";
+      }
+    } catch (error) {
+      console.log(error);
+      loginFailed();
+    }
+  };
+
+  const LoginHandle = async () => {
+    validate(unameOrEmail);
+    if (res) {
+      isEmail();
+    } else {
+      isUsername();
     }
   };
 
@@ -112,8 +178,8 @@ const LoginUser = () => {
                               type="text"
                               name="username"
                               className="form-control me-4"
-                              placeholder="Masukkan Username"
-                              onChange={(e) => setUserame(e.target.value)}
+                              placeholder="Username atau Email"
+                              onChange={(e) => setUnameOrEmail(e.target.value)}
                             />
                           </div>
                         </div>
@@ -127,7 +193,7 @@ const LoginUser = () => {
                                 type="password"
                                 name="password"
                                 id="password-input"
-                                placeholder="Masukkan Password"
+                                placeholder="Password"
                                 value={password}
                                 required
                                 onChange={(e) =>
@@ -139,7 +205,7 @@ const LoginUser = () => {
                               />
                               <BsFillEyeFill
                                 className="m-auto ms-2"
-                                onClick={(e) => getpassword(e.preventDefault())}
+                                onClick={(e) => getPassword(e.preventDefault())}
                               />
                             </div>
                           )}
@@ -163,7 +229,7 @@ const LoginUser = () => {
                               <BsFillEyeSlashFill
                                 className="m-auto ms-2"
                                 onClick={(e) =>
-                                  hidepassword(e.preventDefault())
+                                  hidePassword(e.preventDefault())
                                 }
                               />
                             </div>

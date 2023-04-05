@@ -27,10 +27,11 @@ const Navbar = () => {
           icon: "warning",
           text: "Anda telah Logout!",
         }).then(() => {
-          window.location.reload(false)
+          window.location.reload(false);
         });
         localStorage.removeItem("userId");
         localStorage.removeItem("userName");
+        localStorage.removeItem("userEmail");
         localStorage.removeItem("authToken");
         localStorage.removeItem("orderId");
       }
@@ -44,6 +45,8 @@ const Navbar = () => {
       .getItem("userName")
       .toLocaleUpperCase()
       .replace(/["]/g, "");
+
+    const userEmail = localStorage.getItem("userEmail").replace(/["]/g, "");
 
     return (
       <>
@@ -98,13 +101,26 @@ const Navbar = () => {
               </ul>
             </div>
             <div className="navbar-nav responsive-hide">
-              <button
-                className="nav-link bg-transparent border rounded rounded-pill"
-                onClick={() => LogoutHandle()}
-              >
-                <BsFillPersonFill className="me-2" />
-                <small className="fw-bold">{userLogin}</small>
-              </button>
+              <li className="nav-item dropdown">
+                <button
+                  className="nav-link bg-transparent border rounded rounded-pill"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <BsFillPersonFill className="me-2" />
+                  <small className="fw-bold">{userLogin}</small>
+                </button>
+                <ul className="dropdown-menu dropdown-menu-end animate slideIn">
+                  <a className="dropdown-item">{userEmail}</a>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => LogoutHandle()}
+                  >
+                    Logout
+                  </button>
+                </ul>
+              </li>
             </div>
           </div>
         </nav>
@@ -120,7 +136,12 @@ const Navbar = () => {
         >
           <div className="container-fluid m-1">
             <a className="navbar-brand" href="/">
-              <img src={logo} alt="" height={46} className="rounded rounded-pill border" />
+              <img
+                src={logo}
+                alt=""
+                height={46}
+                className="rounded rounded-pill border"
+              />
             </a>
             <button
               className="navbar-toggler"
@@ -142,7 +163,7 @@ const Navbar = () => {
                   Beranda
                 </Link>
                 <Link to="/rute" className="nav-item nav-link fw-bold">
-                  Rute Travel 
+                  Rute Travel
                 </Link>
                 <li className="nav-item dropdown">
                   <a
