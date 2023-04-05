@@ -29,7 +29,7 @@ const Hero = () => {
                 href="/register"
                 role="button"
               >
-                <small>Daftar Sekarang</small>
+                Daftar Sekarang
               </a>
             </div>
           </div>

@@ -25,11 +25,11 @@ const LoggedIn = () => {
                 Dan permudah proses transaksi travelmu disini!
               </p>
               <div className="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                <a className="btn btn-danger btn-lg px-4 " href="/reservasi">
-                  <small>Reservasi</small>
-                </a>
+                <Link className="btn btn-danger btn-lg px-4" to="/reservasi">
+                  Reservasi
+                </Link>
                 <a className="btn btn-outline-dark btn-lg px-4" href="/rute">
-                  <small>Lihat Rute</small>
+                  Lihat Rute
                 </a>
               </div>
             </div>
