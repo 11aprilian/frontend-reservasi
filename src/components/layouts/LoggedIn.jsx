@@ -1,5 +1,6 @@
 import AOS from "aos";
 import React from "react";
+import { Link } from "react-router-dom";
 import welcome from "../../assets/welcome.png";
 
 const LoggedIn = () => {
