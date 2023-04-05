@@ -27,11 +27,11 @@ const LoggedIn = () => {
               </p>
               <div className="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                 <Link className="btn btn-danger btn-lg px-4" to="/reservasi">
-                  Reservasi
+                  <small>Reservasi</small>
                 </Link>
-                <a className="btn btn-outline-dark btn-lg px-4" href="/rute">
-                  Lihat Rute
-                </a>
+                <Link className="btn btn-outline-dark btn-lg px-4" to="/rute">
+                  <small>Lihat Rute</small> 
+                </Link>
               </div>
             </div>
           </div>

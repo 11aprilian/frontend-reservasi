@@ -1,6 +1,7 @@
 import React from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   AOS.init();
@@ -24,13 +25,13 @@ const Hero = () => {
                 Dan permudah rencana perjalanan anda dengan memesan tiket secara
                 online di LajuJaya.
               </p>
-              <button
+              <Link
                 className="btn btn-danger mx-2 mt-3 col-md-3 shadow"
-                href="/register"
+                to="/register"
                 role="button"
               >
-                Daftar Sekarang
-              </button>
+                <small>Daftar Sekarang</small>
+              </Link>
             </div>
           </div>
         </div>
