@@ -21,7 +21,11 @@ const ListHistory = (props) => {
 
   const orderDetail = () => {
     localStorage.setItem("orderId", orderID);
-    navigate("/reservasi/invoice");
+    if (!localStorage.orderId) {
+      localStorage.setItem("orderId", orderID);
+    } else {
+      navigate("/reservasi/invoice");
+    }
   };
 
   const skeletonEmu = () => {
@@ -49,9 +53,9 @@ const ListHistory = (props) => {
               <div className="">
               <button
                 className="stretched-link btn-sm btn btn-link text-decoration-none fw-bold text-danger"
-                onMouseEnter={(e) => setOrderID(e.target.innerText)}
+                onMouseEnter={(e) => {setOrderID(e.target.innerText)}}
                 onClick={() => {
-                  orderDetail();
+                  orderDetail(); 
                 }}
               >
                 <p>
