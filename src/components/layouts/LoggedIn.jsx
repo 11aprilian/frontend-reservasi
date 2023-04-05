@@ -41,7 +41,7 @@ const LoggedIn = () => {
             data-aos-duration="800"
           >
             <img
-              className=" rounded-3 my-1"
+              className="rounded-3 my-1"
               height={420}
         
               src={welcome}

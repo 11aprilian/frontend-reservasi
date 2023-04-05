@@ -40,7 +40,7 @@ const RegisterUser = () => {
       validate(email);
       if (res) {
         Swal.fire({
-          text: "Selamat anda berhasil Registrasi",
+          text: "Selamat anda berhasil Registrasi, Silahkan Login!",
           icon: "success",
         });
 

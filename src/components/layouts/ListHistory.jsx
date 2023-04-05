@@ -4,9 +4,12 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ListHistory = (props) => {
   AOS.init();
+  const navigate = useNavigate();
   const [emulatorRute, setEmulatorRute] = useState("");
   const [emulatorOrderId, setEmulatorOrderId] = useState("");
   const [emulatorBank, setEmulatorBank] = useState("");
@@ -18,7 +21,7 @@ const ListHistory = (props) => {
 
   const orderDetail = () => {
     localStorage.setItem("orderId", orderID);
-    window.location = "/reservasi/invoice";
+    navigate("/reservasi/invoice");
   };
 
   const skeletonEmu = () => {
@@ -43,7 +46,7 @@ const ListHistory = (props) => {
         <div className="card-body">
           <div className="d-flex justify-content-between">
             <div>
-              <a
+              <Link
                 href="#"
                 id="a"
                 className="stretched-link text-decoration-none fw-bold text-danger"
@@ -57,7 +60,7 @@ const ListHistory = (props) => {
                     <Skeleton count={1} width={250} height={20} />
                   )}
                 </p>
-              </a>
+              </Link>
               <small className="card-orderId">
                 {emulatorRute || <Skeleton count={1} width={100} height={20} />}
               </small>

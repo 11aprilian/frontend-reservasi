@@ -7,11 +7,12 @@ import "aos/dist/aos.css";
 import logo from "../../assets/logo.png";
 import Axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const OrderForm = () => {
   AOS.init();
   const [startDate, setStartDate] = useState(new Date());
-
+  const navigate = useNavigate();
   const [dataRute, setDataRute] = useState([]);
   const [dataJadwal, setDataJadwal] = useState([]);
 
@@ -88,7 +89,7 @@ const OrderForm = () => {
           icon: "success",
           text: "VA Number : " + trans.data.va_number,
         }).then(() => {
-          window.location = "/reservasi/invoice";
+          navigate("/reservasi/invoice");
         });
       } catch (error) {
         console.log(error);
