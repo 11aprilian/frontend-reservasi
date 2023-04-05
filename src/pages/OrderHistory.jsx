@@ -13,7 +13,7 @@ const OrderHistory = () => {
     const userID = localStorage.getItem("userId");
 
     const fetchTransaksi = () => {
-      Axios.get("http://localhost:3050/transaksi/user/" + userID, {
+      Axios.get("https://backend-reservasi-production.up.railway.app/transaksi/user/" + userID, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

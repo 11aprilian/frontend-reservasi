@@ -38,7 +38,7 @@ const LoginUser = () => {
 
   const isEmail = async () => {
     try {
-      let user = await fetch("http://localhost:3050/user/login", {
+      let user = await fetch("https://backend-reservasi-production.up.railway.app/user/login", {
         method: "POST",
         headers: {
           Accept: "*/*",
@@ -55,7 +55,7 @@ const LoginUser = () => {
 
         try {
           let userData = await fetch(
-            "http://localhost:3050/user/profile/" + userID,
+            "https://backend-reservasi-production.up.railway.app/user/profile/" + userID,
             {
               method: "GET",
               headers: {
@@ -92,7 +92,7 @@ const LoginUser = () => {
 
   const isUsername = async () => {
     try {
-      let user = await fetch("http://localhost:3050/user/login", {
+      let user = await fetch("https://backend-reservasi-production.up.railway.app/user/login", {
         method: "POST",
         headers: {
           Accept: "*/*",
@@ -109,7 +109,7 @@ const LoginUser = () => {
 
         try {
           let userData = await fetch(
-            "http://localhost:3050/user/profile/" + userID,
+            "https://backend-reservasi-production.up.railway.app/user/profile/" + userID,
             {
               method: "GET",
               headers: {

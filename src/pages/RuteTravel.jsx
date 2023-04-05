@@ -8,7 +8,7 @@ const RuteTravel = () => {
   const [dataRute, setDataRute] = useState([]);
 
   const fetchRute = () => {
-    Axios.get("http://localhost:3050/rute")
+    Axios.get("https://backend-reservasi-production.up.railway.app/rute")
       .then((result) => {
         console.log("data API", result.data);
         const responseAPI = result.data;

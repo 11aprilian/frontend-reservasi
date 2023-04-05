@@ -73,7 +73,7 @@ const OrderForm = () => {
 
       try {
         const trans = await Axios.post(
-          "http://localhost:3050/transaksi",
+          "https://backend-reservasi-production.up.railway.app/transaksi",
           transaksi,
           {
             headers: {
@@ -101,7 +101,7 @@ const OrderForm = () => {
   };
 
   const fetchRute = () => {
-    Axios.get("http://localhost:3050/rute")
+    Axios.get("https://backend-reservasi-production.up.railway.app/rute")
       .then((result) => {
         console.log("data API", result.data);
         const responseAPI = result.data;
@@ -114,7 +114,7 @@ const OrderForm = () => {
   };
 
   const fetchJadwal = () => {
-    Axios.get("http://localhost:3050/jadwal")
+    Axios.get("https://backend-reservasi-production.up.railway.app/jadwal")
       .then((result) => {
         console.log("data API", result.data);
         const responseAPI = result.data;
@@ -127,7 +127,7 @@ const OrderForm = () => {
   };
 
   const fetchRuteHarga = async () => {
-    let ruteHarga = await fetch(`http://localhost:3050/rute/` + rute, {
+    let ruteHarga = await fetch(`https://backend-reservasi-production.up.railway.app/rute/` + rute, {
       method: "GET",
       headers: {
         Accept: "application/json",
