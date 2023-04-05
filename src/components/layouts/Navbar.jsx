@@ -5,9 +5,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Swal from "sweetalert2";
 import { BsFillPersonFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   AOS.init();
+  const navigate = useNavigate();
 
   const LogoutHandle = () => {
     signoutSuccess();
@@ -27,7 +29,7 @@ const Navbar = () => {
           icon: "warning",
           text: "Anda telah Logout!",
         }).then(() => {
-          window.location.reload(false);
+          navigate("/");
         });
         localStorage.removeItem("userId");
         localStorage.removeItem("userName");

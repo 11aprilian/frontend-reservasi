@@ -47,7 +47,7 @@ const ListHistory = (props) => {
           <div className="d-flex justify-content-between">
             <div>
               <a
-                href="#"
+                href=""
                 className="stretched-link text-decoration-none fw-bold text-danger"
                 onMouseEnter={(e) => setOrderID(e.target.innerText)}
                 onClick={() => {
