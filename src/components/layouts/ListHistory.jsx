@@ -46,7 +46,8 @@ const ListHistory = (props) => {
         <div className="card-body">
           <div className="d-flex justify-content-between">
             <div>
-              <Link
+              <a
+                href="#"
                 className="stretched-link text-decoration-none fw-bold text-danger"
                 onMouseEnter={(e) => setOrderID(e.target.innerText)}
                 onClick={() => {
@@ -58,7 +59,7 @@ const ListHistory = (props) => {
                     <Skeleton count={1} width={250} height={20} />
                   )}
                 </p>
-              </Link>
+              </a>
               <small className="card-orderId">
                 {emulatorRute || <Skeleton count={1} width={100} height={20} />}
               </small>
