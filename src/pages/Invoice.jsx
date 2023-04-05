@@ -10,21 +10,21 @@ const Invoice = () => {
   const orderID = localStorage.getItem("orderId");
 
   const [dataTransaksi, setDataTransaksi] = useState([]);
-  const [nama, setNama] = useState("")
-  const [orderId, setOrderId] = useState("")
-  const [tglTransaksi, setTglTransaksi] = useState("")
-  const [alamat, setAlamat] = useState("")
-  const [rute, setRute] = useState("")
-  const [tglBerangkat, setTglBerangkat] = useState("")
-  const [jam, setJam] = useState("")
-  const [telepon, setTelepon] = useState("")
-  const [bank, setBank] = useState("")
-  const [va, setVa] = useState("")
-  const [status, setStatus] = useState("")
-  const [total, setTotal] = useState("")
+  const [nama, setNama] = useState("");
+  const [orderId, setOrderId] = useState("");
+  const [tglTransaksi, setTglTransaksi] = useState("");
+  const [alamat, setAlamat] = useState("");
+  const [rute, setRute] = useState("");
+  const [tglBerangkat, setTglBerangkat] = useState("");
+  const [jam, setJam] = useState("");
+  const [telepon, setTelepon] = useState("");
+  const [bank, setBank] = useState("");
+  const [va, setVa] = useState("");
+  const [status, setStatus] = useState("");
+  const [total, setTotal] = useState("");
 
   const fetchTransaksi = () => {
-    Axios.get("http://localhost:3050/transaksi/" + orderID )
+    Axios.get("http://localhost:3050/transaksi/" + orderID)
       .then((result) => {
         console.log("data API", result.data);
         const responseAPI = result.data;
@@ -49,7 +49,7 @@ const Invoice = () => {
   };
 
   useEffect(() => {
-    fetchTransaksi()
+    fetchTransaksi();
   }, []);
 
   return (
@@ -73,9 +73,7 @@ const Invoice = () => {
             <div className="row">
               <ul className="list-unstyled">
                 <li className="text-black">{nama.toLocaleUpperCase()}</li>
-                <li className="text-muted mt-1">
-                  {orderId}
-                </li>
+                <li className="text-muted mt-1">{orderId}</li>
                 <li className="text-black mt-1">{tglTransaksi.slice(0, 10)}</li>
               </ul>
               <hr />

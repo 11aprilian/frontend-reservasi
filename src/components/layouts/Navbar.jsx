@@ -52,7 +52,7 @@ const Navbar = () => {
           data-aos="fade-down"
           data-aos-duration="800"
         >
-          <div className="container-fluid m-2 my-3">
+          <div className="container-fluid m-1">
             <a className="navbar-brand" href="/">
               <img
                 src={logo}
@@ -118,9 +118,9 @@ const Navbar = () => {
           data-aos="fade-down"
           data-aos-duration="800"
         >
-          <div className="container-fluid m-2">
+          <div className="container-fluid m-1">
             <a className="navbar-brand" href="/">
-              <img src={logo} alt="" height={46} />
+              <img src={logo} alt="" height={46} className="rounded rounded-pill border" />
             </a>
             <button
               className="navbar-toggler"

@@ -21,7 +21,7 @@ const LandingPage = () => {
     );
   } else {
     return (
-      <div className="gradient-custom min-vh-100">
+      <div className="bg-light min-vh-100">
         <Navbar />
         <Hero />
         <Onboard />

@@ -11,15 +11,15 @@ const LoggedIn = () => {
         <div className="row gx-5 mt-3 align-items-center justify-content-center">
           <div className="col-lg-8 col-xl-7 col-xxl-6">
             <div
-              className="my-5 text-center text-xl-start"
+              className="text-center text-xl-start mt-5"
               data-aos="fade-up"
               data-aos-duration="800"
             >
-              <h1 className="text-uppercase fw-bolder mb-5">
+              <h1 className="text-uppercase fw-bolder">
                 Halo, <span>{user}</span>! Selamat Datang di Web Reservasi{" "}
                 <span className="gradient-text"> LajuJaya!</span>
               </h1>
-              <p className="my-5">
+              <p className="my-4">
                 Ayo reservasi perjalananmu di Laju Jaya Tour & Travel!
                 <br />
                 Dan permudah proses transaksi travelmu disini!
@@ -40,8 +40,9 @@ const LoggedIn = () => {
             data-aos-duration="800"
           >
             <img
-              className=" rounded-3 my-5"
+              className=" rounded-3 my-1"
               height={420}
+        
               src={welcome}
               alt="..."
             />

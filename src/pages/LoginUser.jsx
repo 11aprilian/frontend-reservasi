@@ -3,9 +3,14 @@ import banner from "../assets/banner.svg";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { BsFillEyeFill, BsFillEyeSlashFill, BsFillPersonFill, BsFillLockFill } from "react-icons/bs";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import {
+  BsFillEyeFill,
+  BsFillEyeSlashFill,
+  BsFillPersonFill,
+  BsFillLockFill,
+} from "react-icons/bs";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const LoginUser = () => {
   const navigate = useNavigate();
@@ -91,9 +96,10 @@ const LoginUser = () => {
               <div className="text-black">
                 <div className="card-body p-md-5">
                   <div className="row justify-content-center">
-                    <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1"
-                    data-aos="fade-right"
-                    data-aos-duration="800"
+                    <div
+                      className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1"
+                      data-aos="fade-right"
+                      data-aos-duration="800"
                     >
                       <a href="/">
                         <img src={logo} alt="" width={250} />
@@ -101,7 +107,7 @@ const LoginUser = () => {
                       <form className="mx-1 mx-md-4 mt-4">
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="d-flex form-outline flex-fill mb-0">
-                          <BsFillPersonFill className="m-auto me-2"/>
+                            <BsFillPersonFill className="m-auto me-2" />
                             <input
                               type="text"
                               name="username"
@@ -115,7 +121,7 @@ const LoginUser = () => {
                         <div className="d-flex flex-row align-items-center mt-3 mb-4">
                           {change === "password" && (
                             <div className="d-flex flex-fill">
-                              <BsFillLockFill className="m-auto me-2"/>
+                              <BsFillLockFill className="m-auto me-2" />
                               <input
                                 className="form-control"
                                 type="password"
@@ -131,15 +137,15 @@ const LoginUser = () => {
                                   )
                                 }
                               />
-                                <BsFillEyeFill className="m-auto ms-2" onClick={(e) => 
-                                  getpassword(e.preventDefault())
-                                  }
-                                  />
+                              <BsFillEyeFill
+                                className="m-auto ms-2"
+                                onClick={(e) => getpassword(e.preventDefault())}
+                              />
                             </div>
                           )}
                           {change === "text" && (
                             <div className="d-flex flex-fill">
-                              <BsFillLockFill className="m-auto me-2"/>
+                              <BsFillLockFill className="m-auto me-2" />
                               <input
                                 className="form-control"
                                 type="text"
@@ -154,10 +160,12 @@ const LoginUser = () => {
                                   )
                                 }
                               />
-                                <BsFillEyeSlashFill className="m-auto ms-2" onClick={(e) =>
+                              <BsFillEyeSlashFill
+                                className="m-auto ms-2"
+                                onClick={(e) =>
                                   hidepassword(e.preventDefault())
                                 }
-                                />
+                              />
                             </div>
                           )}
                         </div>
@@ -186,11 +194,12 @@ const LoginUser = () => {
                       </form>
                     </div>
 
-                    <div className="col-md-10 mt-5 col-lg-6 col-xl-5 order-2 order-lg-1 responsive-hide"
-                    data-aos="fade-left"
-                    data-aos-duration="800"
+                    <div
+                      className="col-md-10 mt-5 col-lg-6 col-xl-5 order-2 order-lg-1 responsive-hide"
+                      data-aos="fade-left"
+                      data-aos-duration="800"
                     >
-                    <img src={banner} alt="" width={450} />
+                      <img src={banner} alt="" width={450} />
                     </div>
                   </div>
                 </div>

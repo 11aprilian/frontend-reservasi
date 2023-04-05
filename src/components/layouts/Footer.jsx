@@ -2,11 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-
   return (
     <>
-      <footer className="text-center text-lg-start text-white bg-dark" 
-      >
+      <footer className="text-center text-lg-start text-white bg-dark">
         <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"></section>
         <section className="">
           <div className="container-fluid text-center text-md-start mt-5">
@@ -24,7 +22,7 @@ const Footer = () => {
               <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                 <h6 className="text-uppercase fw-bold mb-4">Link</h6>
                 <p>
-                  <Link to="" className="text-reset text-decoration-none">
+                  <Link to="/" className="text-reset text-decoration-none">
                     Beranda
                   </Link>
                 </p>
@@ -34,7 +32,7 @@ const Footer = () => {
                   </Link>
                 </p>
                 <p>
-                  <Link to='' className="text-reset text-decoration-none">
+                  <Link to="" className="text-reset text-decoration-none">
                     Kebijakan Privasi
                   </Link>
                 </p>
@@ -57,7 +55,9 @@ const Footer = () => {
           </div>
         </section>
         <div>
-          <p className="m-auto text-center text-secondary">© 2023 Laju Jaya Tour & Travel - All Rights Reserved.</p>
+          <p className="m-auto text-center text-secondary">
+            © 2023 Laju Jaya Tour & Travel - All Rights Reserved.
+          </p>
         </div>
       </footer>
     </>

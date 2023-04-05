@@ -14,8 +14,7 @@ const OrderPage = () => {
         <Footer />
       </>
     );
-  } 
-  else {
+  } else {
     return (
       <>
         <Navbar />

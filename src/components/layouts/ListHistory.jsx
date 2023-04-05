@@ -36,7 +36,7 @@ const ListHistory = (props) => {
   useEffect(() => {
     skeletonEmu();
   }, []);
- 
+
   return (
     <>
       <div className="card m-4 p-3 justify-content-between" data-aos="fade-up">
@@ -48,7 +48,9 @@ const ListHistory = (props) => {
                 id="a"
                 className="stretched-link text-decoration-none fw-bold text-danger"
                 onMouseEnter={(e) => setOrderID(e.target.innerText)}
-                onClick={() => {orderDetail()}}
+                onClick={() => {
+                  orderDetail();
+                }}
               >
                 <p>
                   {emulatorOrderId || (

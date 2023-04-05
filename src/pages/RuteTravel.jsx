@@ -23,7 +23,7 @@ const RuteTravel = () => {
   useEffect(() => {
     fetchRute();
   }, []);
-  
+
   return (
     <>
       <Navbar />

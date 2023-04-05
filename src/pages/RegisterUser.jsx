@@ -9,16 +9,19 @@ import Axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { BsFillPersonFill, BsFillLockFill } from "react-icons/bs";
+import { MdAttachEmail } from "react-icons/md";
+import { validate, res } from "react-email-validator";
 
 const RegisterUser = () => {
   AOS.init();
+  const [email, setEmail] = useState("");
   const [username, setUserame] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
   const setUser = async () => {
-    if (username === "" || password === "") {
+    if (email === "" || username === "" || password === "") {
       Swal.fire({
         icon: "error",
         text: "Data Tidak Boleh Kosong!",
@@ -34,36 +37,44 @@ const RegisterUser = () => {
         text: "Mohon konfirmasi Password anda dengan benar!",
       });
     } else {
-      Swal.fire({
-        text: "Selamat anda berhasil Registrasi",
-        icon: "success",
-      });
+      validate(email);
+      if (res) {
+        Swal.fire({
+          text: "Selamat anda berhasil Registrasi",
+          icon: "success",
+        });
 
-      let regis = {
-        username: username,
-        password: password,
-      };
-      console.log(regis);
+        let regis = {
+          email: email,
+          username: username,
+          password: password,
+        };
+        console.log(regis);
 
-      try {
-        const user = await Axios.post(
-          "http://localhost:3050/user/register",
-          regis,
-          {
-            headers: {
-              Accept: "*/*",
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        console.log(user.data);
-        navigate("/login");
-      } catch (error) {
-        console.log(error);
-
+        try {
+          const user = await Axios.post(
+            "http://localhost:3050/user/register",
+            regis,
+            {
+              headers: {
+                Accept: "*/*",
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          console.log(user.data);
+          navigate("/login");
+        } catch (error) {
+          console.log(error);
+          Swal.fire({
+            icon: "error",
+            text: "Username atau Email sudah digunakan!",
+          });
+        }
+      } else {
         Swal.fire({
           icon: "error",
-          text: "Username sudah digunakan!",
+          text: "Masukkan Email dengan Benar!",
         });
       }
     }
@@ -90,6 +101,20 @@ const RegisterUser = () => {
                       <form className="mx-1 mx-md-4 mt-4">
                         <div className="d-flex flex-row align-items-center mb-4">
                           <div className="d-flex form-outline flex-fill mb-0">
+                            <MdAttachEmail className="m-auto me-2" />
+                            <input
+                              change="text"
+                              name="email"
+                              className="form-control"
+                              placeholder="Masukkan Email"
+                              required
+                              onChange={(e) => setEmail(e.target.value)}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="d-flex flex-row align-items-center mb-4">
+                          <div className="d-flex form-outline flex-fill mb-0">
                             <BsFillPersonFill className="m-auto me-2" />
                             <input
                               change="text"
@@ -99,9 +124,6 @@ const RegisterUser = () => {
                               required
                               onChange={(e) => setUserame(e.target.value)}
                             />
-                            <div className="valid-feedback">
-                              Username is Valid!
-                            </div>
                           </div>
                         </div>
 

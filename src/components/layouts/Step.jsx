@@ -47,8 +47,8 @@ const Step = () => {
                   <h2 className="h5 fw-bold">Login</h2>
                   <p className="mb-0">
                     Sepertinya <span className="text-capitalize">{user}</span>{" "}
-                    sudah login, karena kalau tidak login kamu tidak akan bisa sampai
-                    sini.
+                    sudah login, karena kalau tidak login kamu tidak akan bisa
+                    sampai sini.
                   </p>
                 </div>
                 <div className="col mb-5 mb-md-0 h-100">
