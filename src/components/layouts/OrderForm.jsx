@@ -199,7 +199,7 @@ const OrderForm = () => {
                         <select
                           id="rute"
                           className="form-control"
-                          onChange={(e) => {setRute(e.target.value.slice(0, 1));{fetchRuteHarga()}}}
+                          onMouseEnter={(e) => {setRute(e.target.value.slice(0, 1));{fetchRuteHarga()}}}
                         >
                           <option>Pilih Rute</option>
                           {dataRute.map((rute) => {
