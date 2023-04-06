@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import Footer from "../components/layouts/Footer";
 import Navbar from "../components/layouts/Navbar";
+import { Link } from "react-router-dom";
 
 const Invoice = () => {
   AOS.init();
@@ -159,9 +160,9 @@ const Invoice = () => {
               <hr />
             </div>
             <div className="text-center">
-              <a className="text-decoration-none text-danger" href="/">
+              <Link className="text-decoration-none text-danger" to="/history">
                 Kembali
-              </a>
+              </Link>
               <p>Laju Jaya Tour & Travel</p>
             </div>
           </div>

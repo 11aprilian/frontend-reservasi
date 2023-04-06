@@ -4,7 +4,6 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const ListHistory = (props) => {
