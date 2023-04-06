@@ -79,7 +79,7 @@ const ListHistory = (props) => {
               </small>
               
               <div>
-                <small>
+                <small className="text-capitalize">
                   {emulatorStatus || <Skeleton count={1} width={120} />}
                 </small>
               </div>
