@@ -144,7 +144,7 @@ const Invoice = () => {
                 <p>Status Pembayaran</p>
               </div>
               <div className="">
-                <p className="float-end">{status}</p>
+                <p className="float-end text-capitalize">{status}</p>
               </div>
               <hr />
             </div>
