@@ -29,7 +29,7 @@ const Navbar = () => {
           icon: "warning",
           text: "Anda telah Logout!",
         }).then(() => {
-          navigate("/");
+          navigate("/login");
         });
         localStorage.removeItem("userId");
         localStorage.removeItem("userName");
