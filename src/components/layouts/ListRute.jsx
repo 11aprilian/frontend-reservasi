@@ -33,7 +33,7 @@ const ListRute = (props) => {
                 )}
               </p>
               <small className="card-text">
-                <span>
+                <span className="text-capitalize">
                   {emulatorLowerTitle || <Skeleton count={1} width={350} />}
                 </span>
               </small>
