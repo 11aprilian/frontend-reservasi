@@ -3,7 +3,7 @@ import Footer from "../components/layouts/Footer";
 import Navbar from "../components/layouts/Navbar";
 import banner from "../assets/banner.svg";
 import logo from "../assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Axios from "axios";
 import AOS from "aos";
@@ -168,12 +168,12 @@ const RegisterUser = () => {
                         </div>
                         <p className="text-center">
                           Sudah punya akun? Silahkan{" "}
-                          <a
-                            href="/login"
+                          <Link
+                            to="/login"
                             className="text-decoration-none text-danger"
                           >
                             Login
-                          </a>
+                          </Link>
                         </p>
                       </form>
                     </div>

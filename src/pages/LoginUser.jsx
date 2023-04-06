@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import banner from "../assets/banner.svg";
 import logo from "../assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
   BsFillEyeFill,
@@ -249,12 +249,12 @@ const LoginUser = () => {
                         <div>
                           <p className="text-center">
                             Belum punya akun? Silahkan{" "}
-                            <a
-                              href="/register"
+                            <Link
+                              to="/register"
                               className="text-decoration-none text-danger"
                             >
                               Daftar
-                            </a>
+                            </Link>
                           </p>
                         </div>
                       </form>
