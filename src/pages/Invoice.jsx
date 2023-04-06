@@ -24,7 +24,9 @@ const Invoice = () => {
   const [total, setTotal] = useState("");
 
   const fetchTransaksi = () => {
-    Axios.get("https://backend-reservasi-production.up.railway.app/transaksi/" + orderID)
+    Axios.get(
+      "https://backend-reservasi-production.up.railway.app/transaksi/" + orderID
+    )
       .then((result) => {
         console.log("data API", result.data);
         const responseAPI = result.data;

@@ -51,38 +51,42 @@ const ListHistory = (props) => {
           <div className="d-flex justify-content-between">
             <div>
               <div className="">
-              <button
-                className="stretched-link btn-sm btn btn-link text-decoration-none fw-bold text-danger"
-                onMouseEnter={(e) => {setOrderID(e.target.innerText)}}
-                onClick={() => {
-                  orderDetail(); 
-                }}
-              >
-                <p>
-                  {emulatorOrderId || (
-                    <Skeleton count={1} width={250} height={20} />
-                  )}
-                </p>
-              </button>
+                <button
+                  className="stretched-link btn-sm btn btn-link text-decoration-none fw-bold text-danger"
+                  onMouseEnter={(e) => {
+                    setOrderID(e.target.innerText);
+                  }}
+                  onClick={() => {
+                    orderDetail();
+                  }}
+                >
+                  <p>
+                    {emulatorOrderId || (
+                      <Skeleton count={1} width={250} height={20} />
+                    )}
+                  </p>
+                </button>
               </div>
               <div className="ms-2">
-              <small className="card-orderId">
-                {emulatorRute || <Skeleton count={1} width={100} height={20} />}
-              </small>
-              <div className="card-text">
+                <small className="card-orderId">
+                  {emulatorRute || (
+                    <Skeleton count={1} width={100} height={20} />
+                  )}
+                </small>
+                <div className="card-text">
+                  <small>
+                    {emulatorBank || <Skeleton count={1} width={200} />}
+                  </small>
+                </div>
                 <small>
-                  {emulatorBank || <Skeleton count={1} width={200} />}
+                  {emulatorPrice || <Skeleton count={1} width={100} />}
                 </small>
-              </div>
-              <small>
-                {emulatorPrice || <Skeleton count={1} width={100} />}
-              </small>
-              
-              <div>
-                <small className="text-capitalize">
-                  {emulatorStatus || <Skeleton count={1} width={120} />}
-                </small>
-              </div>
+
+                <div>
+                  <small className="text-capitalize">
+                    {emulatorStatus || <Skeleton count={1} width={120} />}
+                  </small>
+                </div>
               </div>
             </div>
             <div className="">
