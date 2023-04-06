@@ -38,14 +38,17 @@ const LoginUser = () => {
 
   const isEmail = async () => {
     try {
-      let user = await fetch("https://backend-reservasi-production.up.railway.app/user/login", {
-        method: "POST",
-        headers: {
-          Accept: "*/*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: unameOrEmail, password: password }),
-      });
+      let user = await fetch(
+        "https://backend-reservasi-production.up.railway.app/user/login",
+        {
+          method: "POST",
+          headers: {
+            Accept: "*/*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: unameOrEmail, password: password }),
+        }
+      );
 
       user = await user.json();
       const userID = user.id;
@@ -55,7 +58,8 @@ const LoginUser = () => {
 
         try {
           let userData = await fetch(
-            "https://backend-reservasi-production.up.railway.app/user/profile/" + userID,
+            "https://backend-reservasi-production.up.railway.app/user/profile/" +
+              userID,
             {
               method: "GET",
               headers: {
@@ -92,14 +96,17 @@ const LoginUser = () => {
 
   const isUsername = async () => {
     try {
-      let user = await fetch("https://backend-reservasi-production.up.railway.app/user/login", {
-        method: "POST",
-        headers: {
-          Accept: "*/*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username: unameOrEmail, password: password }),
-      });
+      let user = await fetch(
+        "https://backend-reservasi-production.up.railway.app/user/login",
+        {
+          method: "POST",
+          headers: {
+            Accept: "*/*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username: unameOrEmail, password: password }),
+        }
+      );
 
       user = await user.json();
       const userID = user.id;
@@ -109,7 +116,8 @@ const LoginUser = () => {
 
         try {
           let userData = await fetch(
-            "https://backend-reservasi-production.up.railway.app/user/profile/" + userID,
+            "https://backend-reservasi-production.up.railway.app/user/profile/" +
+              userID,
             {
               method: "GET",
               headers: {

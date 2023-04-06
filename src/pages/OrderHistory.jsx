@@ -13,13 +13,17 @@ const OrderHistory = () => {
     const userID = localStorage.getItem("userId");
 
     const fetchTransaksi = () => {
-      Axios.get("https://backend-reservasi-production.up.railway.app/transaksi/user/" + userID, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          authorization: localStorage.getItem("authToken"),
-        },
-      })
+      Axios.get(
+        "https://backend-reservasi-production.up.railway.app/transaksi/user/" +
+          userID,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            authorization: localStorage.getItem("authToken"),
+          },
+        }
+      )
         .then((result) => {
           const responseAPI = result.data;
           console.log("data API", result.data);

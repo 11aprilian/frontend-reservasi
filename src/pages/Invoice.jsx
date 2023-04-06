@@ -73,11 +73,15 @@ const Invoice = () => {
                 height={80}
               />
             </div>
-            <div className="row">
+            <div className="row fw-bold">
               <ul className="list-unstyled">
-                <li className="text-black">{nama.toLocaleUpperCase()}</li>
-                <li className="text-muted mt-1">{orderId}</li>
-                <li className="text-black mt-1">{tglTransaksi.slice(0, 10)}</li>
+                <li className="text-black fw-bold">
+                  {nama.toLocaleUpperCase()}
+                </li>
+                <li className="text-muted mt-1 fw-bold">{orderId}</li>
+                <li className="text-black mt-1 fw-bold">
+                  {tglTransaksi.slice(0, 10)}
+                </li>
               </ul>
               <hr />
               <div className="">
@@ -88,7 +92,7 @@ const Invoice = () => {
               </div>
               <hr />
             </div>
-            <div className="row">
+            <div className="row fw-bold">
               <div className="">
                 <p>Rute Travel</p>
               </div>
@@ -97,7 +101,7 @@ const Invoice = () => {
               </div>
               <hr />
             </div>
-            <div className="row">
+            <div className="row fw-bold">
               <div className="">
                 <p>Tanggal Berangkat</p>
               </div>
@@ -106,7 +110,7 @@ const Invoice = () => {
               </div>
               <hr />
             </div>
-            <div className="row">
+            <div className="row fw-bold">
               <div className="">
                 <p>Jam Berangkat</p>
               </div>
@@ -115,7 +119,7 @@ const Invoice = () => {
               </div>
               <hr />
             </div>
-            <div className="row">
+            <div className="row fw-bold">
               <div className="">
                 <p>No Telepon</p>
               </div>
@@ -124,7 +128,7 @@ const Invoice = () => {
               </div>
               <hr />
             </div>
-            <div className="row">
+            <div className="row fw-bold">
               <div className="">
                 <p>Bank</p>
               </div>
@@ -133,7 +137,7 @@ const Invoice = () => {
               </div>
               <hr />
             </div>
-            <div className="row">
+            <div className="row fw-bold">
               <div className="">
                 <p>VA Number</p>
               </div>
@@ -142,7 +146,7 @@ const Invoice = () => {
               </div>
               <hr />
             </div>
-            <div className="row">
+            <div className="row fw-bold">
               <div className="">
                 <p>Status Pembayaran</p>
               </div>
@@ -163,7 +167,7 @@ const Invoice = () => {
               <Link className="text-decoration-none text-danger" to="/history">
                 Kembali
               </Link>
-              <p>Laju Jaya Tour & Travel</p>
+              <p className="fw-bold">Laju Jaya Tour & Travel</p>
             </div>
           </div>
         </div>

@@ -32,9 +32,12 @@ const Footer = () => {
                   </Link>
                 </p>
                 <p>
-                  <Link to="" className="text-reset text-decoration-none">
-                    Kebijakan Privasi
-                  </Link>
+                  <a
+                    href="https://www.lajujaya.id"
+                    className="text-reset text-decoration-none"
+                  >
+                    Profil Bisnis
+                  </a>
                 </p>
               </div>
 

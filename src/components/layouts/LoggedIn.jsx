@@ -30,7 +30,7 @@ const LoggedIn = () => {
                   <small>Reservasi</small>
                 </Link>
                 <Link className="btn btn-outline-dark btn-lg px-4" to="/rute">
-                  <small>Lihat Rute</small> 
+                  <small>Lihat Rute</small>
                 </Link>
               </div>
             </div>
@@ -43,7 +43,6 @@ const LoggedIn = () => {
             <img
               className="rounded-3 my-1"
               height={420}
-        
               src={welcome}
               alt="..."
             />
