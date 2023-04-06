@@ -128,16 +128,13 @@ const OrderForm = () => {
   };
 
   const fetchRuteHarga = async () => {
-    let ruteHarga = await fetch(
-      `https://backend-reservasi-production.up.railway.app/rute/` + rute,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    let ruteHarga = await fetch(`https://backend-reservasi-production.up.railway.app/rute/` + rute, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
     ruteHarga = await ruteHarga.json();
     ruteHarga = await ruteHarga.data.harga;
     setHarga(ruteHarga);
@@ -202,20 +199,16 @@ const OrderForm = () => {
                         <select
                           id="rute"
                           className="form-control"
-                          onChange={(e) => {
-                            setRute(e.target.value.slice(0, 1));
-                          }}
+                          onChange={(e) => {setRute(e.target.value.slice(0, 1))}}
+                          onMouseLeave={(e) => {
+                            fetchRuteHarga();
+                          }
+                        }
                         >
                           <option>Pilih Rute</option>
                           {dataRute.map((rute) => {
                             return (
-                              <option
-                                key={rute.id}
-                                title={rute.arah}
-                                onClick={(e) => {
-                                  fetchRuteHarga();
-                                }}
-                              >
+                              <option key={rute.id} title={rute.arah}>
                                 {rute.id}
                                 {" ). "}
                                 {rute.arah}
