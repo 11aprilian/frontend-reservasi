@@ -22,7 +22,9 @@ const WelcomeToast = () => {
           ></button>
         </div>
         <div className="card-body">
-          <Link to="/rute" className="text-decoration-none text-dark small">Kamu mau travel kemana?</Link>
+          <Link to="/rute" className="text-decoration-none text-dark small">
+            <span className="text-capitalize">{user},</span> mau travel kemana?
+          </Link>
         </div>
       </div>
     </div>
