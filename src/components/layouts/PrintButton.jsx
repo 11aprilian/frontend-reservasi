@@ -13,11 +13,11 @@ const PrintButton = () => {
   return (
     <div>
       <button
-        className="btn btn-danger shadow-lg float"
+        className="btn btn-danger shadow-lg print"
         onClick={Print}
         data-aos="fade-left"
       >
-        <BsFillPrinterFill size={25} />
+        <BsFillPrinterFill size={20} />
       </button>
     </div>
   );
