@@ -245,8 +245,8 @@ const OrderForm = () => {
                         <select
                           id="inputBank"
                           className="form-control"
-                          onChange={(e) =>
-                            setBank(e.target.value.toLowerCase())
+                          onMouseLeave={(e) =>
+                            {setBank(e.target.value.toLowerCase());}
                           }
                         >
                           <option>Permata</option>

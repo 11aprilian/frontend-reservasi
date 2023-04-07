@@ -144,7 +144,7 @@ const Invoice = () => {
                   VA Number
                   <span>
                     <small className="float-end">
-                      {bank.toLocaleUpperCase()} {va}
+                      {bank.toLocaleUpperCase()}{" : "}{va}
                     </small>
                   </span>
                 </p>
