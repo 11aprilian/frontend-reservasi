@@ -6,6 +6,7 @@ import Onboard from "../components/layouts/AboutUs";
 import LoggedIn from "../components/layouts/LoggedIn";
 import Step from "../components/layouts/Step";
 import Services from "../components/layouts/Services";
+import WelcomeToast from "../components/layouts/WelcomeToast";
 
 const LandingPage = () => {
   const user = localStorage.getItem("authToken");
@@ -13,6 +14,7 @@ const LandingPage = () => {
     return (
       <div className="gradient-custom min-vh-100">
         <Navbar />
+        <WelcomeToast/>
         <LoggedIn />
         <Step />
         <Services/>

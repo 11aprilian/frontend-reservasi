@@ -115,12 +115,22 @@ body{
 }
 
 .print{
-	position:fixed;
-	width:50px;
-	height:40px;
-	bottom:40px;
-	right:40px;
-	border-radius:5px;
-	text-align:center;
+	position: fixed;
+	width: 50px;
+	height: 40px;
+	bottom: 40px;
+	right: 40px;
+	border-radius: 5px;
+	text-align: center;
 }
 
+.welcome{
+	position: fixed;
+  background-color: rgba(255,255,255,0.9);
+	width: 230px;
+	height: 100px;
+	top: 100px;
+	right: 20px;
+	border-radius: 5px;
+
+}
