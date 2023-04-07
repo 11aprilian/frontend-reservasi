@@ -60,6 +60,11 @@ const Invoice = () => {
     document.body.innerHTML = originalContents;
   };
 
+  let getYear = () => {
+    let currentYear = new Date().getFullYear();
+    return currentYear;
+  };
+
   useEffect(() => {
     fetchTransaksi();
   }, []);
@@ -69,7 +74,11 @@ const Invoice = () => {
       <Navbar />
       <div className="container-fluid my-4">
         <div className="card-body mx-4">
-          <button className="btn btn-danger shadow-lg float" onClick={Print}>
+          <button
+            className="btn btn-danger shadow-lg float"
+            onClick={Print}
+            data-aos="fade-left"
+          >
             <BsFillPrinterFill size={25} />
           </button>
           <div
@@ -177,9 +186,7 @@ const Invoice = () => {
               <hr />
             </div>
             <div className="text-center">
-              <Link className="text-decoration-none text-danger" to="/history">
-                Kembali
-              </Link>
+              <small className="text-danger fw-bold">{getYear()}</small>
               <p className="fw-bold">Laju Jaya Tour & Travel</p>
             </div>
           </div>
