@@ -5,6 +5,7 @@ import logo from "../assets/logo.png";
 import Footer from "../components/layouts/Footer";
 import Navbar from "../components/layouts/Navbar";
 import { Link } from "react-router-dom";
+import { BsFillPrinterFill } from "react-icons/bs";
 
 const Invoice = () => {
   AOS.init();
@@ -68,6 +69,9 @@ const Invoice = () => {
       <Navbar />
       <div className="container-fluid my-4">
         <div className="card-body mx-4">
+          <button className="btn btn-danger shadow-lg float" onClick={Print}>
+            <BsFillPrinterFill size={25} />
+          </button>
           <div
             className="container bg-light rounded p-5"
             id="invoice"
@@ -117,20 +121,13 @@ const Invoice = () => {
             <div className="row fw-bold">
               <div className="">
                 <p>
-                  Tanggal Berangkat
+                  Jadwal Berangkat
                   <span>
-                    <p className="float-end">{tglBerangkat}</p>
-                  </span>
-                </p>
-              </div>
-              <hr />
-            </div>
-            <div className="row fw-bold">
-              <div className="">
-                <p>
-                  Jam Berangkat
-                  <span>
-                    <p className="float-end">{jam}</p>
+                    <p className="float-end">
+                      {tglBerangkat}
+                      {", Pukul "}
+                      {jam}
+                    </p>
                   </span>
                 </p>
               </div>
@@ -150,20 +147,11 @@ const Invoice = () => {
             <div className="row fw-bold">
               <div className="">
                 <p>
-                  Bank
-                  <span>
-                    <p className="float-end">{bank.toLocaleUpperCase()}</p>
-                  </span>
-                </p>
-              </div>
-              <hr />
-            </div>
-            <div className="row fw-bold">
-              <div className="">
-                <p>
                   VA Number
                   <span>
-                    <p className="float-end">{va}</p>
+                    <p className="float-end">
+                      {bank.toLocaleUpperCase()} {va}
+                    </p>
                   </span>
                 </p>
               </div>
@@ -193,9 +181,6 @@ const Invoice = () => {
                 Kembali
               </Link>
               <p className="fw-bold">Laju Jaya Tour & Travel</p>
-              <button className="btn btn-danger" onClick={Print}>
-                Print
-              </button>
             </div>
           </div>
         </div>
