@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 import Footer from "../components/layouts/Footer";
 import Navbar from "../components/layouts/Navbar";
 import { Link } from "react-router-dom";
-import { BsFillPrinterFill } from "react-icons/bs";
+import PrintButton from "../components/layouts/PrintButton";
 
 const Invoice = () => {
   AOS.init();
@@ -52,14 +52,6 @@ const Invoice = () => {
       });
   };
 
-  const Print = () => {
-    let printContents = document.getElementById("invoice").innerHTML;
-    let originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
-    window.print();
-    document.body.innerHTML = originalContents;
-  };
-
   let getYear = () => {
     let currentYear = new Date().getFullYear();
     return currentYear;
@@ -74,13 +66,6 @@ const Invoice = () => {
       <Navbar />
       <div className="container-fluid my-4">
         <div className="card-body mx-4">
-          <button
-            className="btn btn-danger shadow-lg float"
-            onClick={Print}
-            data-aos="fade-left"
-          >
-            <BsFillPrinterFill size={25} />
-          </button>
           <div
             className="container bg-light rounded p-5"
             id="invoice"
@@ -110,7 +95,7 @@ const Invoice = () => {
                 <p>
                   Alamat{" "}
                   <span>
-                    <p className="float-end">{alamat}</p>
+                    <small className="float-end">{alamat}</small>
                   </span>
                 </p>
               </div>
@@ -121,7 +106,7 @@ const Invoice = () => {
                 <p>
                   Rute Travel
                   <span>
-                    <p className="float-end">{rute}</p>
+                    <small className="float-end">{rute}</small>
                   </span>
                 </p>
               </div>
@@ -132,11 +117,11 @@ const Invoice = () => {
                 <p>
                   Jadwal Berangkat
                   <span>
-                    <p className="float-end">
+                    <small className="float-end">
                       {tglBerangkat}
                       {", Pukul "}
                       {jam}
-                    </p>
+                    </small>
                   </span>
                 </p>
               </div>
@@ -147,7 +132,7 @@ const Invoice = () => {
                 <p>
                   No Telepon
                   <span>
-                    <p className="float-end">{telepon}</p>
+                    <small className="float-end">{telepon}</small>
                   </span>
                 </p>
               </div>
@@ -158,9 +143,9 @@ const Invoice = () => {
                 <p>
                   VA Number
                   <span>
-                    <p className="float-end">
+                    <small className="float-end">
                       {bank.toLocaleUpperCase()} {va}
-                    </p>
+                    </small>
                   </span>
                 </p>
               </div>
@@ -171,7 +156,9 @@ const Invoice = () => {
                 <p>
                   Status Pembayaran
                   <span>
-                    <p className="float-end text-capitalize">{status}</p>
+                    <small className="float-end text-capitalize">
+                      {status}
+                    </small>
                   </span>
                 </p>
               </div>
@@ -192,6 +179,7 @@ const Invoice = () => {
           </div>
         </div>
       </div>
+      <PrintButton />
       <Footer />
     </div>
   );
