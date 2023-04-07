@@ -51,6 +51,14 @@ const Invoice = () => {
       });
   };
 
+  const Print = () => {
+    let printContents = document.getElementById("invoice").innerHTML;
+    let originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  };
+
   useEffect(() => {
     fetchTransaksi();
   }, []);
@@ -62,6 +70,7 @@ const Invoice = () => {
         <div className="card-body mx-4">
           <div
             className="container bg-light rounded p-5"
+            id="invoice"
             data-aos="fade-up"
             data-aos-duration="800"
           >
@@ -85,80 +94,96 @@ const Invoice = () => {
               </ul>
               <hr />
               <div className="">
-                <p>Alamat</p>
-              </div>
-              <div className="">
-                <p className="float-end">{alamat}</p>
-              </div>
-              <hr />
-            </div>
-            <div className="row fw-bold">
-              <div className="">
-                <p>Rute Travel</p>
-              </div>
-              <div className="">
-                <p className="float-end">{rute}</p>
+                <p>
+                  Alamat{" "}
+                  <span>
+                    <p className="float-end">{alamat}</p>
+                  </span>
+                </p>
               </div>
               <hr />
             </div>
             <div className="row fw-bold">
               <div className="">
-                <p>Tanggal Berangkat</p>
-              </div>
-              <div className="">
-                <p className="float-end">{tglBerangkat}</p>
-              </div>
-              <hr />
-            </div>
-            <div className="row fw-bold">
-              <div className="">
-                <p>Jam Berangkat</p>
-              </div>
-              <div className="">
-                <p className="float-end">{jam}</p>
+                <p>
+                  Rute Travel
+                  <span>
+                    <p className="float-end">{rute}</p>
+                  </span>
+                </p>
               </div>
               <hr />
             </div>
             <div className="row fw-bold">
               <div className="">
-                <p>No Telepon</p>
-              </div>
-              <div className="">
-                <p className="float-end">{telepon}</p>
-              </div>
-              <hr />
-            </div>
-            <div className="row fw-bold">
-              <div className="">
-                <p>Bank</p>
-              </div>
-              <div className="">
-                <p className="float-end">{bank.toLocaleUpperCase()}</p>
+                <p>
+                  Tanggal Berangkat
+                  <span>
+                    <p className="float-end">{tglBerangkat}</p>
+                  </span>
+                </p>
               </div>
               <hr />
             </div>
             <div className="row fw-bold">
               <div className="">
-                <p>VA Number</p>
-              </div>
-              <div className="">
-                <p className="float-end">{va}</p>
+                <p>
+                  Jam Berangkat
+                  <span>
+                    <p className="float-end">{jam}</p>
+                  </span>
+                </p>
               </div>
               <hr />
             </div>
             <div className="row fw-bold">
               <div className="">
-                <p>Status Pembayaran</p>
+                <p>
+                  No Telepon
+                  <span>
+                    <p className="float-end">{telepon}</p>
+                  </span>
+                </p>
               </div>
+              <hr />
+            </div>
+            <div className="row fw-bold">
               <div className="">
-                <p className="float-end text-capitalize">{status}</p>
+                <p>
+                  Bank
+                  <span>
+                    <p className="float-end">{bank.toLocaleUpperCase()}</p>
+                  </span>
+                </p>
+              </div>
+              <hr />
+            </div>
+            <div className="row fw-bold">
+              <div className="">
+                <p>
+                  VA Number
+                  <span>
+                    <p className="float-end">{va}</p>
+                  </span>
+                </p>
+              </div>
+              <hr />
+            </div>
+            <div className="row fw-bold">
+              <div className="">
+                <p>
+                  Status Pembayaran
+                  <span>
+                    <p className="float-end text-capitalize">{status}</p>
+                  </span>
+                </p>
               </div>
               <hr />
             </div>
             <div className="row text-black">
               <div className="col-xl-12">
                 <p className="float-end fw-bold">
-                  Total: Rp. <span>{total}</span>
+                  Total : Rp. <span>{total}</span>
                 </p>
               </div>
               <hr />
@@ -168,6 +193,9 @@ const Invoice = () => {
                 Kembali
               </Link>
               <p className="fw-bold">Laju Jaya Tour & Travel</p>
+              <button className="btn btn-danger" onClick={Print}>
+                Print
+              </button>
             </div>
           </div>
         </div>
