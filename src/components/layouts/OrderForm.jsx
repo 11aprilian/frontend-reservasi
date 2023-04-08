@@ -226,7 +226,7 @@ const OrderForm = () => {
                         <select
                           id="jadwal"
                           className="form-control"
-                          onChange={(e) => setJam(e.target.value.slice(0, 1))}
+                          onMouseLeave={(e) => setJam(e.target.value.slice(0, 1))}
                         >
                           <option>Pilih Jam Berangkat</option>
                           {dataJadwal.map((jadwal) => {
