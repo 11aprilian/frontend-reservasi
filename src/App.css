@@ -132,5 +132,8 @@ body{
 	top: 100px;
 	right: 20px;
 	border-radius: 5px;
+}
 
+.welcome-f{
+  font-family: 'Staatliches', cursive;
 }

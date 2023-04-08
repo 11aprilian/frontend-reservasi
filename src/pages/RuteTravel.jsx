@@ -26,7 +26,7 @@ const RuteTravel = () => {
   }, []);
 
   return (
-    <>
+    <div className="bg-light">
       <Navbar />
       <Breadcrumb/>
       <div className="min-vh-100">
@@ -37,7 +37,7 @@ const RuteTravel = () => {
         })}
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

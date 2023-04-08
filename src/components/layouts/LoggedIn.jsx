@@ -16,7 +16,7 @@ const LoggedIn = () => {
               data-aos="fade-up"
               data-aos-duration="800"
             >
-              <h1 className="text-uppercase fw-bolder">
+              <h1 className="text-uppercase welcome-f">
                 Halo, <span>{user}</span>! Selamat Datang di Web Reservasi{" "}
                 <span className="gradient-text"> LajuJaya!</span>
               </h1>

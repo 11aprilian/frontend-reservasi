@@ -39,7 +39,7 @@ const OrderHistory = () => {
     }, []);
 
     return (
-      <div>
+      <div className="bg-light">
         <Navbar />
         <Breadcrumb/>
         <div className="min-vh-100">

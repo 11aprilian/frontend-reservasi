@@ -10,12 +10,12 @@ const OrderPage = () => {
 
   if (user) {
     return (
-      <>
+      <div>
         <Navbar />
         <Breadcrumb/>
         <OrderForm />
         <Footer />
-      </>
+      </div>
     );
   } else {
     return (
