@@ -4,6 +4,7 @@ import Footer from "../components/layouts/Footer";
 import ListHistory from "../components/layouts/ListHistory";
 import LoggedOut from "../components/layouts/LoggedOut";
 import Axios from "axios";
+import Breadcrumb from "../components/layouts/Breadcumb";
 
 const OrderHistory = () => {
   const user = localStorage.getItem("authToken");
@@ -40,6 +41,7 @@ const OrderHistory = () => {
     return (
       <div>
         <Navbar />
+        <Breadcrumb/>
         <div className="min-vh-100">
           {dataTrans.map((trans) => {
             return (

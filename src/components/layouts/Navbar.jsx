@@ -91,7 +91,7 @@ const Navbar = () => {
                 <Link to="/reservasi" className="nav-item nav-link fw-bold">
                   Reservasi
                 </Link>
-                <Link to="/history" className="nav-item nav-link fw-bold">
+                <Link to="/reservasi/history" className="nav-item nav-link fw-bold">
                   Riwayat Reservasi
                 </Link>
                 <button

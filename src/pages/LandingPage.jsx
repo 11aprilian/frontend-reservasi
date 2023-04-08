@@ -9,6 +9,7 @@ import Services from "../components/layouts/Services";
 import WelcomeToast from "../components/layouts/WelcomeToast";
 
 const LandingPage = () => {
+
   const user = localStorage.getItem("authToken");
   if (user) {
     return (

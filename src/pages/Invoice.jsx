@@ -6,6 +6,7 @@ import Footer from "../components/layouts/Footer";
 import Navbar from "../components/layouts/Navbar";
 import { Link } from "react-router-dom";
 import PrintButton from "../components/layouts/PrintButton";
+import Breadcrumb from "../components/layouts/Breadcumb";
 
 const Invoice = () => {
   AOS.init();
@@ -64,6 +65,7 @@ const Invoice = () => {
   return (
     <div className="bg-dark">
       <Navbar />
+      <Breadcrumb/>
       <div className="container-fluid my-4">
         <div className="card-body mx-4">
           <div
