@@ -12,11 +12,15 @@ const OrderHistory = () => {
   if (user) {
     const [dataTrans, setDataTrans] = useState([]);
     const userID = localStorage.getItem("userId");
+    const [status, setStatus] = useState("");
+    const [transLength, setTransLength] = useState(1);
 
     const fetchTransaksi = () => {
       Axios.get(
         "https://backend-reservasi-production.up.railway.app/transaksi/user/" +
-          userID,
+          userID +
+          "/" +
+          status,
         {
           headers: {
             Accept: "application/json",
@@ -28,6 +32,8 @@ const OrderHistory = () => {
         .then((result) => {
           const responseAPI = result.data;
           console.log("data API", result.data);
+
+          setTransLength(responseAPI.data.length);
           setDataTrans(responseAPI.data);
         })
         .catch((err) => {
@@ -44,6 +50,60 @@ const OrderHistory = () => {
         <div className="p-top bg-light">
           <Breadcrumb />
         </div>
+
+        <div
+          className="container m-4"
+          data-aos="fade-up"
+          data-aos-duration="700"
+        >
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input small"
+              type="radio"
+              name="flexRadioDefault"
+              onClick={() => setStatus("settlement")}
+            />
+            <label className="form-check-label small text-secondary">
+              Dibayar
+            </label>
+          </div>
+
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input small"
+              type="radio"
+              name="flexRadioDefault"
+              onClick={() => setStatus("pending")}
+            />
+            <label className="form-check-label small text-secondary">
+              Belum Dibayar
+            </label>
+          </div>
+
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input small"
+              type="radio"
+              name="flexRadioDefault"
+              onClick={() => setStatus("expire")}
+            />
+            <label className="form-check-label small text-secondary">
+              Expire
+            </label>
+          </div>
+
+          <div className="form-check-inline">
+            <button
+              className="btn small btn-sm btn-outline-secondary"
+              onClick={() => {
+                fetchTransaksi();
+              }}
+            >
+              Filter
+            </button>
+          </div>
+        </div>
+
         <div className="min-vh-100">
           {dataTrans.map((trans) => {
             return (
