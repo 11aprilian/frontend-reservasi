@@ -9,7 +9,7 @@ const LoggedIn = () => {
   return (
     <div className="">
       <div className="container">
-        <div className="row gx-5 mt-1 align-items-center justify-content-center">
+        <div className="row mt-1 align-items-center justify-content-center">
           <div className="col-lg-8 col-xl-7 col-xxl-6">
             <div
               className="text-center text-xl-start mt-5"
