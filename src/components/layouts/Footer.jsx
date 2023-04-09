@@ -57,7 +57,7 @@ const Footer = () => {
             </div>
           </div>
         </section>
-        <div>
+        <div className="pb-3">
           <p className="m-auto text-center text-secondary">
             © 2023 Laju Jaya Tour & Travel - All Rights Reserved.
           </p>

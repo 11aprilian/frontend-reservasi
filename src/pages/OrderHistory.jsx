@@ -88,7 +88,7 @@ const OrderHistory = () => {
               onClick={() => setStatus("expire")}
             />
             <label className="form-check-label small text-secondary">
-              Expire
+              Tidak Dibayar
             </label>
           </div>
 
