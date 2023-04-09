@@ -33,6 +33,7 @@ const OrderHistory = () => {
           const responseAPI = result.data;
 
           setTransLength(responseAPI.data.length);
+          localStorage.setItem("transArray", transLength);
           setDataTrans(responseAPI.data);
         })
         .catch((err) => {
@@ -51,7 +52,7 @@ const OrderHistory = () => {
         </div>
 
         <div
-          className="container m-4"
+          className="container mt-4"
           data-aos="fade-up"
           data-aos-duration="700"
         >
