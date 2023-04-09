@@ -23,7 +23,7 @@ const ListRute = (props) => {
   }, []);
   return (
     <>
-      <div className="card m-4 p-3 justify-content-between" data-aos="fade-up">
+      <div className="card m-4 p-3 justify-content-between shadow" data-aos="fade-up">
         <div className="card-body">
           <div className="d-flex justify-content-between">
             <div>

@@ -26,10 +26,10 @@ const LoggedIn = () => {
                 Dan permudah proses transaksi travelmu disini!
               </p>
               <div className="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                <Link className="btn btn-danger btn-lg px-4" to="/reservasi">
+                <Link className="btn btn-danger btn-lg px-4 shadow" to="/reservasi">
                   <small>Reservasi</small>
                 </Link>
-                <Link className="btn btn-outline-dark btn-lg px-4" to="/rute">
+                <Link className="btn btn-outline-dark btn-lg px-4 shadow" to="/rute">
                   <small>Lihat Rute</small>
                 </Link>
               </div>

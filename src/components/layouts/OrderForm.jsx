@@ -278,7 +278,7 @@ const OrderForm = () => {
                     </div>
                     <button
                       type="submit"
-                      className="my-3 btn btn-danger"
+                      className="my-3 btn btn-danger shadow"
                       onClick={(e) => setTransaksi(e.preventDefault())}
                     >
                       Reservasi

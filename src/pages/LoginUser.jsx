@@ -248,7 +248,7 @@ const LoginUser = () => {
                           <button
                             id="submit"
                             type="submit"
-                            className="btn btn-danger btn-lg"
+                            className="btn btn-danger btn-lg shadow"
                             onClick={(e) => LoginHandle(e.preventDefault())}
                           >
                             Login
