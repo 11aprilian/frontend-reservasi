@@ -28,7 +28,9 @@ const RuteTravel = () => {
   return (
     <div className="bg-light">
       <Navbar />
-      <Breadcrumb/>
+      <div className="p-top bg-light">
+        <Breadcrumb />
+      </div>
       <div className="min-vh-100">
         {dataRute.map((rute) => {
           return (

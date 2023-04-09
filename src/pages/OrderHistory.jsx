@@ -41,7 +41,9 @@ const OrderHistory = () => {
     return (
       <div className="bg-light">
         <Navbar />
-        <Breadcrumb/>
+        <div className="p-top bg-light">
+          <Breadcrumb />
+        </div>
         <div className="min-vh-100">
           {dataTrans.map((trans) => {
             return (
@@ -63,6 +65,9 @@ const OrderHistory = () => {
     return (
       <>
         <Navbar />
+        <div className="p-top bg-light">
+          <Breadcrumb />
+        </div>
         <LoggedOut />
         <Footer />
       </>

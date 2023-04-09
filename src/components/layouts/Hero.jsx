@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   AOS.init();
   return (
-    <div className="hero-image container-fluid">
+    <div className="hero-image container-fluid p-top vh-100">
       <div
         className="p-5 text-center"
         data-aos="fade-up"

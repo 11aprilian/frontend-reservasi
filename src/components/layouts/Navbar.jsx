@@ -53,7 +53,7 @@ const Navbar = () => {
     return (
       <>
         <nav
-          className="navbar navbar-expand-lg bg-light shadow-sm"
+          className="navbar navbar-expand-lg bg-light shadow-sm fixed-top"
           data-aos="fade-down"
           data-aos-duration="800"
         >
@@ -91,7 +91,10 @@ const Navbar = () => {
                 <Link to="/reservasi" className="nav-item nav-link fw-bold">
                   Reservasi
                 </Link>
-                <Link to="/reservasi/history" className="nav-item nav-link fw-bold">
+                <Link
+                  to="/reservasi/history"
+                  className="nav-item nav-link fw-bold"
+                >
                   Riwayat Reservasi
                 </Link>
                 <button
@@ -132,7 +135,7 @@ const Navbar = () => {
     return (
       <>
         <nav
-          className="navbar navbar-expand-lg bg-light shadow-sm"
+          className="navbar navbar-expand-lg bg-light shadow-sm fixed-top"
           data-aos="fade-down"
           data-aos-duration="800"
         >

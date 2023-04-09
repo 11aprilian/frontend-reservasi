@@ -12,7 +12,9 @@ const OrderPage = () => {
     return (
       <div>
         <Navbar />
-        <Breadcrumb/>
+        <div className="p-top bg-light">
+          <Breadcrumb />
+        </div>
         <OrderForm />
         <Footer />
       </div>
@@ -21,7 +23,9 @@ const OrderPage = () => {
     return (
       <>
         <Navbar />
-        <Breadcrumb/>
+        <div className="p-top">
+          <Breadcrumb />
+        </div>
         <LoggedOut />
         <Footer />
       </>

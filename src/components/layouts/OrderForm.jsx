@@ -226,7 +226,9 @@ const OrderForm = () => {
                         <select
                           id="jadwal"
                           className="form-control"
-                          onMouseLeave={(e) => setJam(e.target.value.slice(0, 1))}
+                          onMouseLeave={(e) =>
+                            setJam(e.target.value.slice(0, 1))
+                          }
                         >
                           <option>Pilih Jam Berangkat</option>
                           {dataJadwal.map((jadwal) => {
@@ -245,9 +247,9 @@ const OrderForm = () => {
                         <select
                           id="inputBank"
                           className="form-control"
-                          onMouseLeave={(e) =>
-                            {setBank(e.target.value.toLowerCase());}
-                          }
+                          onMouseLeave={(e) => {
+                            setBank(e.target.value.toLowerCase());
+                          }}
                         >
                           <option>Permata</option>
                           <option>BRI</option>

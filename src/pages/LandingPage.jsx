@@ -9,16 +9,17 @@ import Services from "../components/layouts/Services";
 import WelcomeToast from "../components/layouts/WelcomeToast";
 
 const LandingPage = () => {
-
   const user = localStorage.getItem("authToken");
   if (user) {
     return (
       <div className="gradient-custom min-vh-100">
         <Navbar />
-        <WelcomeToast/>
-        <LoggedIn />
+        <WelcomeToast />
+        <div className="p-top">
+          <LoggedIn />
+        </div>
         <Step />
-        <Services/>
+        <Services />
         <Footer />
       </div>
     );

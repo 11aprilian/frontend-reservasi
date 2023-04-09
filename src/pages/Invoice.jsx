@@ -62,129 +62,148 @@ const Invoice = () => {
     fetchTransaksi();
   }, []);
 
-  return (
-    <div className="bg-dark">
-      <Navbar />
-      <Breadcrumb/>
-      <div className="container-fluid my-4">
-        <div className="card-body mx-4">
-          <div
-            className="container bg-light rounded p-5"
-            id="invoice"
-            data-aos="fade-up"
-            data-aos-duration="800"
-          >
-            <div className="text-center mt-3 mb-5">
-              <img
-                src={logo}
-                alt=""
-                className="rounded rounded-pill border"
-                height={80}
-              />
-            </div>
-            <div className="row fw-bold">
-              <ul className="list-unstyled">
-                <li className="text-black fw-bold">
-                  {nama.toLocaleUpperCase()}
-                </li>
-                <li className="text-muted mt-1 fw-bold">{orderId}</li>
-                <li className="text-black mt-1 fw-bold">
-                  {tglTransaksi.slice(0, 10)}
-                </li>
-              </ul>
-              <hr />
-              <div className="">
-                <p>
-                  Alamat{" "}
-                  <span>
-                    <small className="float-end">{alamat}</small>
-                  </span>
-                </p>
+  const user = localStorage.getItem("authToken");
+
+  if (user) {
+    return (
+      <div className="bg-dark">
+        <Navbar />
+        <div className="p-top bg-light">
+          <Breadcrumb />
+        </div>
+        <div className="container-fluid my-4">
+          <div className="card-body mx-4">
+            <div
+              className="container bg-light rounded p-5"
+              id="invoice"
+              data-aos="fade-up"
+              data-aos-duration="800"
+            >
+              <div className="text-center mt-3 mb-5">
+                <img
+                  src={logo}
+                  alt=""
+                  className="rounded rounded-pill border"
+                  height={80}
+                />
               </div>
-              <hr />
-            </div>
-            <div className="row fw-bold">
-              <div className="">
-                <p>
-                  Rute Travel
-                  <span>
-                    <small className="float-end">{rute}</small>
-                  </span>
-                </p>
+              <div className="row fw-bold">
+                <ul className="list-unstyled">
+                  <li className="text-black fw-bold">
+                    {nama.toLocaleUpperCase()}
+                  </li>
+                  <li className="text-muted mt-1 fw-bold">{orderId}</li>
+                  <li className="text-black mt-1 fw-bold">
+                    {tglTransaksi.slice(0, 10)}
+                  </li>
+                </ul>
+                <hr />
+                <div className="">
+                  <p>
+                    Alamat{" "}
+                    <span>
+                      <small className="float-end">{alamat}</small>
+                    </span>
+                  </p>
+                </div>
+                <hr />
               </div>
-              <hr />
-            </div>
-            <div className="row fw-bold">
-              <div className="">
-                <p>
-                  Jadwal Berangkat
-                  <span>
-                    <small className="float-end">
-                      {tglBerangkat}
-                      {", Pukul "}
-                      {jam}
-                    </small>
-                  </span>
-                </p>
+              <div className="row fw-bold">
+                <div className="">
+                  <p>
+                    Rute Travel
+                    <span>
+                      <small className="float-end">{rute}</small>
+                    </span>
+                  </p>
+                </div>
+                <hr />
               </div>
-              <hr />
-            </div>
-            <div className="row fw-bold">
-              <div className="">
-                <p>
-                  No Telepon
-                  <span>
-                    <small className="float-end">{telepon}</small>
-                  </span>
-                </p>
+              <div className="row fw-bold">
+                <div className="">
+                  <p>
+                    Jadwal Berangkat
+                    <span>
+                      <small className="float-end">
+                        {tglBerangkat}
+                        {", Pukul "}
+                        {jam}
+                      </small>
+                    </span>
+                  </p>
+                </div>
+                <hr />
               </div>
-              <hr />
-            </div>
-            <div className="row fw-bold">
-              <div className="">
-                <p>
-                  VA Number
-                  <span>
-                    <small className="float-end">
-                      {bank.toLocaleUpperCase()}{" : "}{va}
-                    </small>
-                  </span>
-                </p>
+              <div className="row fw-bold">
+                <div className="">
+                  <p>
+                    No Telepon
+                    <span>
+                      <small className="float-end">{telepon}</small>
+                    </span>
+                  </p>
+                </div>
+                <hr />
               </div>
-              <hr />
-            </div>
-            <div className="row fw-bold">
-              <div className="">
-                <p>
-                  Status Pembayaran
-                  <span>
-                    <small className="float-end text-capitalize">
-                      {status}
-                    </small>
-                  </span>
-                </p>
+              <div className="row fw-bold">
+                <div className="">
+                  <p>
+                    VA Number
+                    <span>
+                      <small className="float-end">
+                        {bank.toLocaleUpperCase()}
+                        {" : "}
+                        {va}
+                      </small>
+                    </span>
+                  </p>
+                </div>
+                <hr />
               </div>
-              <hr />
-            </div>
-            <div className="row text-black">
-              <div className="col-xl-12">
-                <p className="float-end fw-bold">
-                  Total : Rp. <span>{total}</span>
-                </p>
+              <div className="row fw-bold">
+                <div className="">
+                  <p>
+                    Status Pembayaran
+                    <span>
+                      <small className="float-end text-capitalize">
+                        {status}
+                      </small>
+                    </span>
+                  </p>
+                </div>
+                <hr />
               </div>
-              <hr />
-            </div>
-            <div className="text-center">
-              <small className="text-danger fw-bold">{getYear()}</small>
-              <p className="fw-bold">Laju Jaya Tour & Travel</p>
+              <div className="row text-black">
+                <div className="col-xl-12">
+                  <p className="float-end fw-bold">
+                    Total : Rp. <span>{total}</span>
+                  </p>
+                </div>
+                <hr />
+              </div>
+              <div className="text-center">
+                <small className="text-danger fw-bold">{getYear()}</small>
+                <p className="fw-bold">Laju Jaya Tour & Travel</p>
+              </div>
             </div>
           </div>
         </div>
+        <PrintButton />
+        <Footer />
       </div>
-      <PrintButton />
-      <Footer />
-    </div>
-  );
+    );
+  } else {
+    return (
+      <>
+        <Navbar />
+        <div className="p-top bg-light">
+          <Breadcrumb />
+        </div>
+        <LoggedOut />
+        <Footer />
+      </>
+    );
+  }
 };
 
 export default Invoice;

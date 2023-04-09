@@ -8,7 +8,7 @@ const Breadcrumb = ({ separator = " ", crumbs = [] }) => {
   return (
     <div
       aria-label="breadcrumb"
-      className="ps-4 pt-4 pb-2 bg-light shadow-sm"
+      className="ps-4 pb-2 bg-light shadow-sm"
       data-aos="fade-down"
     >
       <ol className="breadcrumb container">
