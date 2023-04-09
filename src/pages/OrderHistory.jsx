@@ -94,7 +94,7 @@ const OrderHistory = () => {
 
           <div className="form-check-inline">
             <button
-              className="btn small btn-sm btn-secondary shadow-sm"
+              className="btn small btn-sm btn-secondary shadow-sm filter-btn"
               onClick={() => {
                 fetchTransaksi();
               }}
