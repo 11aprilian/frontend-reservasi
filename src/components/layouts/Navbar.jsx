@@ -36,6 +36,7 @@ const Navbar = () => {
         localStorage.removeItem("userEmail");
         localStorage.removeItem("authToken");
         localStorage.removeItem("orderId");
+        localStorage.removeItem("transArray");
       }
     });
   };
