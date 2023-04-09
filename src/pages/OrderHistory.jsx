@@ -99,7 +99,7 @@ const OrderHistory = () => {
                 fetchTransaksi();
               }}
             >
-              Filter
+              Set Filter
             </button>
           </div>
         </div>
