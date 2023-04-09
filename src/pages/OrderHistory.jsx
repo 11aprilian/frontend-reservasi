@@ -31,7 +31,6 @@ const OrderHistory = () => {
       )
         .then((result) => {
           const responseAPI = result.data;
-          console.log("data API", result.data);
 
           setTransLength(responseAPI.data.length);
           setDataTrans(responseAPI.data);

@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 const OrderForm = () => {
   AOS.init();
-  const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
+  const [startDate, setStartDate] = useState(new Date());
   const [dataRute, setDataRute] = useState([]);
   const [dataJadwal, setDataJadwal] = useState([]);
 
@@ -69,7 +69,6 @@ const OrderForm = () => {
         tanggal: tanggal,
         bank: bank,
       };
-      console.log(transaksi);
       localStorage.setItem("orderId", trans_id);
 
       try {
@@ -84,7 +83,6 @@ const OrderForm = () => {
             },
           }
         );
-        console.log(trans.data);
         Swal.fire({
           icon: "success",
           text: "VA Number : " + trans.data.va_number,
@@ -104,9 +102,7 @@ const OrderForm = () => {
   const fetchRute = () => {
     Axios.get("https://backend-reservasi-production.up.railway.app/rute")
       .then((result) => {
-        console.log("data API", result.data);
         const responseAPI = result.data;
-
         setDataRute(responseAPI.data);
       })
       .catch((err) => {
@@ -117,9 +113,7 @@ const OrderForm = () => {
   const fetchJadwal = () => {
     Axios.get("https://backend-reservasi-production.up.railway.app/jadwal")
       .then((result) => {
-        console.log("data API", result.data);
         const responseAPI = result.data;
-
         setDataJadwal(responseAPI.data);
       })
       .catch((err) => {

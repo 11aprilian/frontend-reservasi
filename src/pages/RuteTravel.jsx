@@ -11,7 +11,6 @@ const RuteTravel = () => {
   const fetchRute = () => {
     Axios.get("https://backend-reservasi-production.up.railway.app/rute")
       .then((result) => {
-        console.log("data API", result.data);
         const responseAPI = result.data;
 
         setDataRute(responseAPI.data);
