@@ -122,19 +122,18 @@ const OrderForm = () => {
   };
 
   const fetchRuteHarga = async () => {
-    let ruteHarga = await fetch(
-      `https://backend-reservasi-production.up.railway.app/rute/` + rute,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    ruteHarga = await ruteHarga.json();
-    ruteHarga = await ruteHarga.data.harga;
-    setHarga(ruteHarga);
+    Axios.get(
+      "https://backend-reservasi-production.up.railway.app/rute/name/" + rute
+    )
+      .then((result) => {
+        const responseAPI = result.data;
+        const ruteData = responseAPI.data;
+
+        setHarga(ruteData.harga);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -197,7 +196,7 @@ const OrderForm = () => {
                           id="rute"
                           className="form-control"
                           onChange={(e) => {
-                            setRute(e.target.value.slice(0, 1));
+                            setRute(e.target.value);
                           }}
                           onMouseLeave={(e) => {
                             fetchRuteHarga();
@@ -207,8 +206,6 @@ const OrderForm = () => {
                           {dataRute.map((rute) => {
                             return (
                               <option key={rute.id} title={rute.arah}>
-                                {rute.id}
-                                {" ). "}
                                 {rute.arah}
                               </option>
                             );
