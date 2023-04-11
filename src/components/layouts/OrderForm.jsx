@@ -20,6 +20,7 @@ const OrderForm = () => {
   const [alamat, setAlamat] = useState("");
   const [telepon, setTelepon] = useState("");
   const [rute, setRute] = useState("");
+  const [ruteId, setRuteId] = useState("");
   const [jam, setJam] = useState("");
   const [bank, setBank] = useState("");
   const [harga, setHarga] = useState("");
@@ -61,7 +62,7 @@ const OrderForm = () => {
           gross_amount: harga,
         },
         UserId: localStorage.getItem("userId"),
-        RuteId: rute,
+        RuteId: ruteId,
         JadwalId: jam,
         nama: nama,
         alamat: alamat,
@@ -129,6 +130,7 @@ const OrderForm = () => {
         const responseAPI = result.data;
         const ruteData = responseAPI.data;
 
+        setRuteId(ruteData.id);
         setHarga(ruteData.harga);
       })
       .catch((err) => {
@@ -191,7 +193,7 @@ const OrderForm = () => {
                         />
                       </div>
                       <div className="form-group col-md-6">
-                        <label className="my-2 ms-2">Rute</label>
+                        <label className="my-2 ms-2">Pilih Rute</label>
                         <select
                           id="rute"
                           className="form-control"
