@@ -11,7 +11,7 @@ import OrderHistory from "./pages/OrderHistory";
 function App() {
 
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/rute" element={<RuteTravel/>}/>
@@ -21,7 +21,7 @@ function App() {
         <Route path="/reservasi/invoice" element={<Invoice/>}/>
         <Route path="/reservasi/history" element={<OrderHistory/>}/>
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }
 
