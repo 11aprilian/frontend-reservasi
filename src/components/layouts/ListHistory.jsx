@@ -51,8 +51,8 @@ const ListHistory = (props) => {
             <div>
               <div className="">
                 <button
-                  className="btn-sm btn btn-link text-decoration-none fw-bold text-danger"
-                  onMouseEnter={(e) => {
+                  className="stretched-link btn-sm btn btn-link text-decoration-none fw-bold text-danger"
+                  onFocus={(e) => {
                     setOrderID(e.target.innerText);
                   }}
                   onClick={() => {
