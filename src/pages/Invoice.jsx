@@ -6,7 +6,7 @@ import Footer from "../components/layouts/Footer";
 import Navbar from "../components/layouts/Navbar";
 import { Link } from "react-router-dom";
 import PrintButton from "../components/layouts/PrintButton";
-import Breadcrumb from "../components/layouts/Breadcumb";
+import Breadcrumb from "../components/layouts/Breadcrumb";
 
 const Invoice = () => {
   AOS.init();

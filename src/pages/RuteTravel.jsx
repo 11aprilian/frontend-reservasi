@@ -3,7 +3,7 @@ import Axios from "axios";
 import Footer from "../components/layouts/Footer";
 import ListRute from "../components/layouts/ListRute";
 import Navbar from "../components/layouts/Navbar";
-import Breadcrumb from "../components/layouts/Breadcumb";
+import Breadcrumb from "../components/layouts/Breadcrumb";
 
 const RuteTravel = () => {
   const [dataRute, setDataRute] = useState([]);

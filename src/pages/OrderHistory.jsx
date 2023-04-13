@@ -4,7 +4,7 @@ import Footer from "../components/layouts/Footer";
 import ListHistory from "../components/layouts/ListHistory";
 import LoggedOut from "../components/layouts/LoggedOut";
 import Axios from "axios";
-import Breadcrumb from "../components/layouts/Breadcumb";
+import Breadcrumb from "../components/layouts/Breadcrumb";
 
 const OrderHistory = () => {
   const user = localStorage.getItem("authToken");
@@ -50,7 +50,6 @@ const OrderHistory = () => {
         <div className="p-top bg-light">
           <Breadcrumb />
         </div>
-
         <div
           className="container mt-4"
           data-aos="fade-up"
