@@ -14,7 +14,7 @@ const LandingPage = () => {
     return (
       <div className="gradient-custom min-vh-100 min-vw-100">
         <Navbar />
-        <WelcomeToast />
+        {/* <WelcomeToast /> */}
         <div className="p-top">
           <LoggedIn />
         </div>
