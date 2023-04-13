@@ -6,7 +6,7 @@ import banner from "../../assets/banner.jpg";
 const AboutUs = () => {
   AOS.init();
   return (
-    <div className="bg-white">
+    <div className="bg-light">
       <div className="about-section paddingTB60">
         <div className="container">
           <div className="row">
