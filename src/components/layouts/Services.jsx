@@ -7,8 +7,8 @@ import AOS from "aos";
 const Services = () => {
   AOS.init();
   return (
-    <div className="my-4">
-      <section className="" data-aos="fade-up" data-aos-duration="800">
+    <div className="py-4 bg-light" data-aos="fade-up" data-aos-duration="800">
+      <section className="" >
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
