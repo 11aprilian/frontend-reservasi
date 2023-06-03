@@ -17,7 +17,7 @@ const OrderHistory = () => {
 
     const fetchTransaksi = () => {
       Axios.get(
-        "https://backend-reservasi-production.up.railway.app/transaksi/user/" +
+        "http://localhost:3050/transaksi/user/" +
           userID +
           "/" +
           status,

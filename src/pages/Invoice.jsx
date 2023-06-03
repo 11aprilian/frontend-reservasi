@@ -28,7 +28,7 @@ const Invoice = () => {
 
   const fetchTransaksi = () => {
     Axios.get(
-      "https://backend-reservasi-production.up.railway.app/transaksi/" + orderID
+      "http://localhost:3050/transaksi/" + orderID
     )
       .then((result) => {
         console.log("data API", result.data);
@@ -38,7 +38,8 @@ const Invoice = () => {
         setNama(responseAPI.data.nama);
         setOrderId(responseAPI.data.id);
         setAlamat(responseAPI.data.alamat);
-        setTglBerangkat(responseAPI.data.tanggal);
+        setTglBerangkat(responseAPI.data.Jadwal_driver.Tanggal.tanggal);
+        setJam(responseAPI.data.Jadwal_driver.Jadwal.jam)
         setTelepon(responseAPI.data.no_hp);
         setBank(responseAPI.data.bank);
         setVa(responseAPI.data.va_number);
@@ -46,7 +47,6 @@ const Invoice = () => {
         setTotal(responseAPI.data.total);
         setTglTransaksi(responseAPI.data.createdAt);
         setRute(responseAPI.data.Rute.arah);
-        setJam(responseAPI.data.Jadwal.jam);
       })
       .catch((err) => {
         console.log(err);

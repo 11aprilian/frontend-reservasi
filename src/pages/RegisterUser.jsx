@@ -53,7 +53,7 @@ const RegisterUser = () => {
 
         try {
           const user = await Axios.post(
-            "https://backend-reservasi-production.up.railway.app/user/register",
+            "http://localhost:3050/user/register",
             regis,
             {
               headers: {

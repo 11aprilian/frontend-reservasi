@@ -14,6 +14,7 @@ const OrderForm = () => {
   const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
   const [dataRute, setDataRute] = useState([]);
+  const [dataTgl, setDataTgl] = useState([]);
   const [dataJadwal, setDataJadwal] = useState([]);
 
   const [nama, setNama] = useState("");
@@ -22,9 +23,10 @@ const OrderForm = () => {
   const [rute, setRute] = useState("");
   const [ruteId, setRuteId] = useState("");
   const [jam, setJam] = useState("");
+  const [jadwal, setJadwal] = useState("");
+  const [tgl, setTgl] = useState("0");
   const [bank, setBank] = useState("");
   const [harga, setHarga] = useState("");
-  const tanggal = startDate.toString().slice(4, 15);
 
   const setTransaksi = async () => {
     const unique_id = uuid();
@@ -36,9 +38,9 @@ const OrderForm = () => {
       alamat === "" ||
       telepon === "" ||
       rute === "" ||
-      jam === "" ||
       bank === "" ||
-      tanggal === "" ||
+      tgl === "" ||
+      jadwal === "" ||
       harga === ""
     ) {
       Swal.fire({
@@ -63,18 +65,17 @@ const OrderForm = () => {
         },
         UserId: localStorage.getItem("userId"),
         RuteId: ruteId,
-        JadwalId: jam,
+        JadwalDriverId: jadwal,
         nama: nama,
         alamat: alamat,
         no_hp: telepon,
-        tanggal: tanggal,
         bank: bank,
       };
       localStorage.setItem("orderId", trans_id);
 
       try {
         const trans = await Axios.post(
-          "https://backend-reservasi-production.up.railway.app/transaksi",
+          "http://localhost:3050/transaksi",
           transaksi,
           {
             headers: {
@@ -101,7 +102,7 @@ const OrderForm = () => {
   };
 
   const fetchRute = () => {
-    Axios.get("https://backend-reservasi-production.up.railway.app/rute")
+    Axios.get("http://localhost:3050/rute")
       .then((result) => {
         const responseAPI = result.data;
         setDataRute(responseAPI.data);
@@ -111,8 +112,19 @@ const OrderForm = () => {
       });
   };
 
+  const fetchTanggal = () => {
+    Axios.get("http://localhost:3050/tanggal")
+      .then((result) => {
+        const responseAPI = result.data;
+        setDataTgl(responseAPI.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const fetchJadwal = () => {
-    Axios.get("https://backend-reservasi-production.up.railway.app/jadwal")
+    Axios.get("http://localhost:3050/jadwaldriver/tanggal/" + tgl )
       .then((result) => {
         const responseAPI = result.data;
         setDataJadwal(responseAPI.data);
@@ -124,7 +136,7 @@ const OrderForm = () => {
 
   const fetchRuteHarga = async () => {
     Axios.get(
-      "https://backend-reservasi-production.up.railway.app/rute/name/" + rute
+      "http://localhost:3050/rute/name/" + rute
     )
       .then((result) => {
         const responseAPI = result.data;
@@ -140,8 +152,10 @@ const OrderForm = () => {
 
   useEffect(() => {
     fetchRute();
-    fetchJadwal();
+    fetchTanggal();
   }, []);
+
+  console.log(jadwal);
 
   return (
     <>
@@ -214,27 +228,46 @@ const OrderForm = () => {
                           })}
                         </select>
                       </div>
-                      <div className="form-group col-md-4">
-                        <label className="my-2 ms-2">Jam Berangkat</label>
+
+                      <div className="form-group col-md-6">
+                        <label className="my-2 ms-2">Pilih Tanggal Terlebih Dahulu</label>
                         <select
-                          id="jadwal"
+                          id="tanggal"
                           className="form-control"
-                          onMouseLeave={(e) =>
-                            setJam(e.target.value.slice(0, 1))
-                          }
+                          onChange={(e) => {setTgl(e.target.value)}}
+                          onMouseLeave={(e) => {
+                            fetchJadwal();
+                          }}
                         >
-                          <option>Pilih Jam Berangkat</option>
-                          {dataJadwal.map((jadwal) => {
+                          <option>Pilih Tanggal</option>
+                          {dataTgl.map((tgl) => {
                             return (
-                              <option key={jadwal.id} jadwal={jadwal.jam}>
-                                {jadwal.id}
-                                {" ). Jam Berangkat Pukul "}
-                                {jadwal.jam}
+                              <option key={tgl.id} value={tgl.id}>
+                                {tgl.tanggal}
                               </option>
                             );
                           })}
                         </select>
                       </div>
+
+                      <div className="form-group col-md-6">
+                        <label className="my-2 ms-2">Pilih Jam</label>
+                        <select
+                          id="jadwal"
+                          className="form-control"
+                          onChange={(e) => {setJadwal(e.target.value)}}
+                        >
+                          <option>Pilih Jam Berangkat</option>
+                          {dataJadwal.map((jam) => {
+                            return (
+                              <option key={jam.id} value={jam.id}>
+                                {jam.Jadwal.jam}, {jam.id}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                      
                       <div className="form-group col-md-4">
                         <label className="my-2 ms-2">Pilih Bank Transfer</label>
                         <select
@@ -249,14 +282,6 @@ const OrderForm = () => {
                           <option>BCA</option>
                           <option>BNI</option>
                         </select>
-                      </div>
-                      <div className="form-group col-md-4">
-                        <label className="my-2 ms-2">Tanggal Berangkat</label>
-                        <DatePicker
-                          className="form-control"
-                          selected={startDate}
-                          onChange={(date) => setStartDate(date)}
-                        />
                       </div>
                       <div className="form-group col-md-4">
                         <label className="my-2 ms-2">Harga</label>
