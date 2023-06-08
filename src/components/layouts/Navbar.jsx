@@ -35,13 +35,12 @@ const Navbar = () => {
         localStorage.removeItem("userName");
         localStorage.removeItem("userEmail");
         localStorage.removeItem("authToken");
-        localStorage.removeItem("orderId");
-        localStorage.removeItem("transArray");
       }
     });
   };
 
   const user = localStorage.getItem("authToken");
+  const id = localStorage.getItem("userId");
 
   if (user) {
     const userLogin = localStorage
@@ -93,7 +92,7 @@ const Navbar = () => {
                   Reservasi
                 </Link>
                 <Link
-                  to="/reservasi/history"
+                  to={`/reservasi/history/${id}`}
                   className="nav-item nav-link fw-bold"
                 >
                   Riwayat Reservasi

@@ -3,6 +3,7 @@ import Navbar from "../components/layouts/Navbar";
 import Footer from "../components/layouts/Footer";
 import ListHistory from "../components/layouts/ListHistory";
 import LoggedOut from "../components/layouts/LoggedOut";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Axios from "axios";
 import Breadcrumb from "../components/layouts/Breadcrumb";
 
@@ -11,14 +12,13 @@ const OrderHistory = () => {
 
   if (user) {
     const [dataTrans, setDataTrans] = useState([]);
-    const userID = localStorage.getItem("userId");
+    const { id } = useParams();
     const [status, setStatus] = useState("");
-    const [transLength, setTransLength] = useState(1);
 
     const fetchTransaksi = () => {
       Axios.get(
         "http://localhost:3050/transaksi/user/" +
-          userID +
+          id +
           "/" +
           status,
         {
@@ -31,9 +31,6 @@ const OrderHistory = () => {
       )
         .then((result) => {
           const responseAPI = result.data;
-
-          setTransLength(responseAPI.data.length);
-          localStorage.setItem("transArray", transLength);
           setDataTrans(responseAPI.data);
         })
         .catch((err) => {
@@ -60,7 +57,10 @@ const OrderHistory = () => {
               className="form-check-input small"
               type="radio"
               name="flexRadioDefault"
-              onClick={() => setStatus("settlement")}
+              onFocus={() => setStatus("settlement")}
+              onClick={() => {
+                fetchTransaksi();
+              }}
             />
             <label className="form-check-label small text-secondary">
               Dibayar
@@ -72,7 +72,10 @@ const OrderHistory = () => {
               className="form-check-input small"
               type="radio"
               name="flexRadioDefault"
-              onClick={() => setStatus("pending")}
+              onFocus={() => setStatus("pending")}
+              onClick={() => {
+                fetchTransaksi();
+              }}
             />
             <label className="form-check-label small text-secondary">
               Belum Dibayar
@@ -84,22 +87,14 @@ const OrderHistory = () => {
               className="form-check-input small"
               type="radio"
               name="flexRadioDefault"
-              onClick={() => setStatus("expire")}
+              onFocus={() => setStatus("expire")}
+              onClick={() => {
+                fetchTransaksi();
+              }}
             />
             <label className="form-check-label small text-secondary">
               Tidak Dibayar
             </label>
-          </div>
-
-          <div className="form-check-inline">
-            <button
-              className="btn small btn-sm btn-secondary shadow-sm filter-btn"
-              onClick={() => {
-                fetchTransaksi();
-              }}
-            >
-              Set Filter
-            </button>
           </div>
         </div>
 
@@ -108,7 +103,7 @@ const OrderHistory = () => {
             return (
               <ListHistory
                 key={trans.id}
-                rute={trans.Rute.arah}
+                rute={trans.Jadwal_driver.Rute.arah}
                 orderId={trans.id}
                 bank={trans.bank}
                 price={trans.total}

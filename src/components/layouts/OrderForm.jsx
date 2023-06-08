@@ -8,25 +8,46 @@ import logo from "../../assets/logo.png";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale, setDefaultLocale } from "react-datepicker";
+import id from "date-fns/locale/id"; // Impor modul bahasa Indonesia
+import { format } from 'date-fns';
+
+registerLocale("id", id); // Mendaftarkan bahasa Indonesia
+setDefaultLocale("id");
 
 const OrderForm = () => {
   AOS.init();
   const navigate = useNavigate();
-  const [startDate, setStartDate] = useState(new Date());
   const [dataRute, setDataRute] = useState([]);
-  const [dataTgl, setDataTgl] = useState([]);
-  const [dataJadwal, setDataJadwal] = useState([]);
+  const [dataJam, setDataJam] = useState([]);
 
   const [nama, setNama] = useState("");
   const [alamat, setAlamat] = useState("");
   const [telepon, setTelepon] = useState("");
   const [rute, setRute] = useState("");
-  const [ruteId, setRuteId] = useState("");
+  const [tanggal, setTanggal] = useState("");
   const [jam, setJam] = useState("");
   const [jadwal, setJadwal] = useState("");
-  const [tgl, setTgl] = useState("0");
   const [bank, setBank] = useState("");
   const [harga, setHarga] = useState("");
+  const [hari, setHari] = useState("");
+
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleChange = (date) => {
+    setSelectedDate(date);
+    const formattedDate = format(date, 'd MMMM yyyy', { locale: id });
+    setTanggal(formattedDate);    
+    if (date) {
+      const days = ['1', '2', '3', '4', '5', '6', '7'];
+      const dayIndex = date.getDay();
+      const selectedDayName = days[dayIndex];
+      setHari(selectedDayName);
+    } else {
+      setHari('');
+    }
+  };
 
   const setTransaksi = async () => {
     const unique_id = uuid();
@@ -39,8 +60,7 @@ const OrderForm = () => {
       telepon === "" ||
       rute === "" ||
       bank === "" ||
-      tgl === "" ||
-      jadwal === "" ||
+      tanggal === "" ||
       harga === ""
     ) {
       Swal.fire({
@@ -64,14 +84,13 @@ const OrderForm = () => {
           gross_amount: harga,
         },
         UserId: localStorage.getItem("userId"),
-        RuteId: ruteId,
         JadwalDriverId: jadwal,
         nama: nama,
+        tanggal: tanggal,
         alamat: alamat,
         no_hp: telepon,
         bank: bank,
       };
-      localStorage.setItem("orderId", trans_id);
 
       try {
         const trans = await Axios.post(
@@ -89,7 +108,7 @@ const OrderForm = () => {
           icon: "success",
           text: "VA Number : " + trans.data.va_number,
         }).then(() => {
-          navigate("/reservasi/invoice");
+          navigate(`/reservasi/${trans_id}`);
         });
       } catch (error) {
         console.log(error);
@@ -112,22 +131,11 @@ const OrderForm = () => {
       });
   };
 
-  const fetchTanggal = () => {
-    Axios.get("http://localhost:3050/tanggal")
+  const fetchJam = () => {
+    Axios.get("http://localhost:3050/jam/")
       .then((result) => {
         const responseAPI = result.data;
-        setDataTgl(responseAPI.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const fetchJadwal = () => {
-    Axios.get("http://localhost:3050/jadwaldriver/tanggal/" + tgl )
-      .then((result) => {
-        const responseAPI = result.data;
-        setDataJadwal(responseAPI.data);
+        setDataJam(responseAPI.data);
       })
       .catch((err) => {
         console.log(err);
@@ -135,14 +143,11 @@ const OrderForm = () => {
   };
 
   const fetchRuteHarga = async () => {
-    Axios.get(
-      "http://localhost:3050/rute/name/" + rute
-    )
+    Axios.get("http://localhost:3050/rute/" + rute)
       .then((result) => {
         const responseAPI = result.data;
         const ruteData = responseAPI.data;
 
-        setRuteId(ruteData.id);
         setHarga(ruteData.harga);
       })
       .catch((err) => {
@@ -150,11 +155,29 @@ const OrderForm = () => {
       });
   };
 
+  const fetchJadwal = async () => {
+    Axios.get("http://localhost:3050/jadwaldriver/all/" + hari +"/"+ rute +"/"+ jam)
+      .then((result) => {
+        const responseAPI = result.data;
+        const jadwalDriver = responseAPI.data;
+        console.log(jadwalDriver);
+        setJadwal(jadwalDriver.id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
   useEffect(() => {
     fetchRute();
-    fetchTanggal();
+    fetchJam();
   }, []);
-
+ 
+  console.log(hari);
+  console.log(tanggal);
+  console.log(rute);
+  console.log(jam);
   console.log(jadwal);
 
   return (
@@ -221,7 +244,11 @@ const OrderForm = () => {
                           <option>Pilih Rute</option>
                           {dataRute.map((rute) => {
                             return (
-                              <option key={rute.id} title={rute.arah}>
+                              <option
+                                key={rute.id}
+                                title={rute.arah}
+                                value={rute.id}
+                              >
                                 {rute.arah}
                               </option>
                             );
@@ -230,24 +257,17 @@ const OrderForm = () => {
                       </div>
 
                       <div className="form-group col-md-6">
-                        <label className="my-2 ms-2">Pilih Tanggal Terlebih Dahulu</label>
-                        <select
-                          id="tanggal"
+                        <label className="my-2 ms-2">
+                          Pilih Tanggal Terlebih Dahulu
+                        </label>
+
+                        <DatePicker
+                          placeholderText="Tanggal"
+                          dateFormat="dd/MM/yyyy"
                           className="form-control"
-                          onChange={(e) => {setTgl(e.target.value)}}
-                          onMouseLeave={(e) => {
-                            fetchJadwal();
-                          }}
-                        >
-                          <option>Pilih Tanggal</option>
-                          {dataTgl.map((tgl) => {
-                            return (
-                              <option key={tgl.id} value={tgl.id}>
-                                {tgl.tanggal}
-                              </option>
-                            );
-                          })}
-                        </select>
+                          selected={selectedDate}
+                          onChange={handleChange}
+                        />
                       </div>
 
                       <div className="form-group col-md-6">
@@ -255,19 +275,22 @@ const OrderForm = () => {
                         <select
                           id="jadwal"
                           className="form-control"
-                          onChange={(e) => {setJadwal(e.target.value)}}
+                          onChange={(e) => {
+                            setJam(e.target.value);
+                          }}
+                          onMouseLeave={fetchJadwal}
                         >
                           <option>Pilih Jam Berangkat</option>
-                          {dataJadwal.map((jam) => {
+                          {dataJam.map((jam) => {
                             return (
                               <option key={jam.id} value={jam.id}>
-                                {jam.Jadwal.jam}, {jam.id}
+                                {jam.jam}
                               </option>
                             );
                           })}
                         </select>
                       </div>
-                      
+
                       <div className="form-group col-md-4">
                         <label className="my-2 ms-2">Pilih Bank Transfer</label>
                         <select

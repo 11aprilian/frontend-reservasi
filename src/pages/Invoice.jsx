@@ -4,13 +4,13 @@ import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import Footer from "../components/layouts/Footer";
 import Navbar from "../components/layouts/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import PrintButton from "../components/layouts/PrintButton";
 import Breadcrumb from "../components/layouts/Breadcrumb";
 
 const Invoice = () => {
   AOS.init();
-  const orderID = localStorage.getItem("orderId");
+  const { id } = useParams();
 
   const [dataTransaksi, setDataTransaksi] = useState([]);
   const [nama, setNama] = useState("");
@@ -28,7 +28,7 @@ const Invoice = () => {
 
   const fetchTransaksi = () => {
     Axios.get(
-      "http://localhost:3050/transaksi/" + orderID
+      "http://localhost:3050/transaksi/" + id
     )
       .then((result) => {
         console.log("data API", result.data);
@@ -38,15 +38,15 @@ const Invoice = () => {
         setNama(responseAPI.data.nama);
         setOrderId(responseAPI.data.id);
         setAlamat(responseAPI.data.alamat);
-        setTglBerangkat(responseAPI.data.Jadwal_driver.Tanggal.tanggal);
-        setJam(responseAPI.data.Jadwal_driver.Jadwal.jam)
+        setTglBerangkat(responseAPI.data.tanggal);
+        setJam(responseAPI.data.Jadwal_driver.Jam.jam)
         setTelepon(responseAPI.data.no_hp);
         setBank(responseAPI.data.bank);
         setVa(responseAPI.data.va_number);
         setStatus(responseAPI.data.paid);
         setTotal(responseAPI.data.total);
         setTglTransaksi(responseAPI.data.createdAt);
-        setRute(responseAPI.data.Rute.arah);
+        setRute(responseAPI.data.Jadwal_driver.Rute.arah);
       })
       .catch((err) => {
         console.log(err);
@@ -61,6 +61,7 @@ const Invoice = () => {
   useEffect(() => {
     fetchTransaksi();
   }, []);
+  console.log(dataTransaksi);
 
   const user = localStorage.getItem("authToken");
 

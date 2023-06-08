@@ -4,7 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ListHistory = (props) => {
   AOS.init();
@@ -50,21 +50,16 @@ const ListHistory = (props) => {
           <div className="d-flex justify-content-between">
             <div>
               <div className="">
-                <button
+                <Link
                   className="stretched-link btn-sm btn btn-link text-decoration-none fw-bold text-danger"
-                  onFocus={(e) => {
-                    setOrderID(e.target.innerText);
-                  }}
-                  onClick={() => {
-                    orderDetail();
-                  }}
+                  to={`/reservasi/${props.orderId}`}
                 >
                   <p>
                     {emulatorOrderId || (
                       <Skeleton count={1} width={250} height={20} />
                     )}
                   </p>
-                </button>
+                </Link>
               </div>
               <div className="ms-2">
                 <small className="card-orderId">

@@ -18,8 +18,8 @@ function App() {
         <Route path="/register" element={<RegisterUser/>}/>
         <Route path="/login" element={<LoginUser/>}/>
         <Route path="/reservasi" element={<OrderPage/>}/>
-        <Route path="/reservasi/invoice" element={<Invoice/>}/>
-        <Route path="/reservasi/history" element={<OrderHistory/>}/>
+        <Route path="/reservasi/:id" element={<Invoice/>}/>
+        <Route path="/reservasi/history/:id" element={<OrderHistory/>}/>
       </Routes>
     </>
   )
