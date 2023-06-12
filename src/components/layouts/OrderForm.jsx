@@ -265,6 +265,7 @@ const OrderForm = () => {
                           placeholderText="Tanggal"
                           dateFormat="dd/MM/yyyy"
                           className="form-control"
+                          minDate={new Date()} 
                           selected={selectedDate}
                           onChange={handleChange}
                         />

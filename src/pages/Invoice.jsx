@@ -90,15 +90,23 @@ const Invoice = () => {
               </div>
               <div className="row fw-bold">
                 <ul className="list-unstyled">
-                  <li className="text-black fw-bold">
-                    {nama.toLocaleUpperCase()}
-                  </li>
-                  <li className="text-muted mt-1 fw-bold">{orderId}</li>
-                  <li className="text-black mt-1 fw-bold">
+                  <li className="text-muted mt-1 fw-bolder h3">{orderId}</li>
+                  <li className="text-danger mt-1 fw-bold">
                     {tglTransaksi.slice(0, 10)}
                   </li>
                 </ul>
                 <hr />
+                <div className="row fw-bold">
+                <div className="">
+                  <p>
+                    Nama
+                    <span>
+                      <small className="float-end">{nama}</small>
+                    </span>
+                  </p>
+                </div>
+                <hr />
+              </div>
                 <div className="">
                   <p>
                     Alamat{" "}
