@@ -27,9 +27,7 @@ const Invoice = () => {
   const [total, setTotal] = useState("");
 
   const fetchTransaksi = () => {
-    Axios.get(
-      "http://localhost:3050/transaksi/" + id
-    )
+    Axios.get("http://localhost:3050/transaksi/" + id)
       .then((result) => {
         console.log("data API", result.data);
         const responseAPI = result.data;
@@ -39,7 +37,7 @@ const Invoice = () => {
         setOrderId(responseAPI.data.id);
         setAlamat(responseAPI.data.alamat);
         setTglBerangkat(responseAPI.data.tanggal);
-        setJam(responseAPI.data.Jadwal_driver.Jam.jam)
+        setJam(responseAPI.data.Jadwal_driver.Jam.jam);
         setTelepon(responseAPI.data.no_hp);
         setBank(responseAPI.data.bank);
         setVa(responseAPI.data.va_number);
@@ -88,15 +86,14 @@ const Invoice = () => {
                   height={80}
                 />
               </div>
+              <ul className="list-unstyled">
+                <li className="text-muted mt-1 fw-bolder h3">{orderId}</li>
+                <li className="text-danger mt-1 fw-bold">
+                  {tglTransaksi.slice(0, 10)}
+                </li>
+              </ul>
+              <hr />
               <div className="row fw-bold">
-                <ul className="list-unstyled">
-                  <li className="text-muted mt-1 fw-bolder h3">{orderId}</li>
-                  <li className="text-danger mt-1 fw-bold">
-                    {tglTransaksi.slice(0, 10)}
-                  </li>
-                </ul>
-                <hr />
-                <div className="row fw-bold">
                 <div className="">
                   <p>
                     Nama
@@ -107,6 +104,7 @@ const Invoice = () => {
                 </div>
                 <hr />
               </div>
+              <div className="row fw-bold">
                 <div className="">
                   <p>
                     Alamat{" "}
