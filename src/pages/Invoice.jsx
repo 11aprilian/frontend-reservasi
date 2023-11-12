@@ -25,6 +25,7 @@ const Invoice = () => {
   const [va, setVa] = useState("");
   const [status, setStatus] = useState("");
   const [total, setTotal] = useState("");
+  const [nomorSeat, setNomorSeat] = useState("");
 
   const fetchTransaksi = () => {
     Axios.get("http://localhost:3050/transaksi/" + id)
@@ -45,6 +46,7 @@ const Invoice = () => {
         setTotal(responseAPI.data.total);
         setTglTransaksi(responseAPI.data.createdAt);
         setRute(responseAPI.data.Jadwal_driver.Rute.arah);
+        setNomorSeat(responseAPI.data.Seat.nomor);
       })
       .catch((err) => {
         console.log(err);
@@ -135,6 +137,19 @@ const Invoice = () => {
                         {tglBerangkat}
                         {", Pukul "}
                         {jam}
+                      </small>
+                    </span>
+                  </p>
+                </div>
+                <hr />
+              </div>
+              <div className="row fw-bold">
+                <div className="">
+                  <p>
+                    Nomor Seat
+                    <span>
+                      <small className="float-end">
+                        {nomorSeat}
                       </small>
                     </span>
                   </p>

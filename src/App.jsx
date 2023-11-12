@@ -7,6 +7,8 @@ import LoginUser from "./pages/LoginUser";
 import OrderPage from "./pages/OrderPage";
 import Invoice from "./pages/Invoice";
 import OrderHistory from "./pages/OrderHistory";
+import ArmadaTravel from "./pages/ArmadaTravel";
+import ArmadaDetail from "./pages/ArmadaDetail";
 
 function App() {
 
@@ -15,6 +17,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/rute" element={<RuteTravel/>}/>
+        <Route path="/armada" element={<ArmadaTravel/>}/>
+        <Route path="/armada/:id" element={<ArmadaDetail/>}/>
         <Route path="/register" element={<RegisterUser/>}/>
         <Route path="/login" element={<LoginUser/>}/>
         <Route path="/reservasi" element={<OrderPage/>}/>

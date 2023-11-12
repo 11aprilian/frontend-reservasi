@@ -13,7 +13,7 @@ const OrderHistory = () => {
   if (user) {
     const [dataTrans, setDataTrans] = useState([]);
     const { id } = useParams();
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState("settlement");
 
     const fetchTransaksi = () => {
       Axios.get(
@@ -40,7 +40,7 @@ const OrderHistory = () => {
     useEffect(() => {
       fetchTransaksi();
     }, []);
-
+console.log(dataTrans);
     return (
       <div className="bg-light">
         <Navbar />

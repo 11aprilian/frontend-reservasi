@@ -88,6 +88,9 @@ const Navbar = () => {
                 <Link to="/rute" className="nav-item nav-link fw-bold">
                   Rute Travel
                 </Link>
+                <Link to="/armada" className="nav-item nav-link fw-bold">
+                  Armada
+                </Link>
                 <Link to="/reservasi" className="nav-item nav-link fw-bold">
                   Reservasi
                 </Link>
@@ -169,6 +172,9 @@ const Navbar = () => {
                 </Link>
                 <Link to="/rute" className="nav-item nav-link fw-bold">
                   Rute Travel
+                </Link>
+                <Link to="/armada" className="nav-item nav-link fw-bold">
+                  Armada
                 </Link>
                 <li className="nav-item dropdown">
                   <a

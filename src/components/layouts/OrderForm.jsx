@@ -21,6 +21,8 @@ const OrderForm = () => {
   const navigate = useNavigate();
   const [dataRute, setDataRute] = useState([]);
   const [dataJam, setDataJam] = useState([]);
+  const [dataSeat, setDataSeat] = useState([]);
+  const [dataArmada, setDataArmada] = useState("");
 
   const [nama, setNama] = useState("");
   const [alamat, setAlamat] = useState("");
@@ -32,6 +34,9 @@ const OrderForm = () => {
   const [bank, setBank] = useState("");
   const [harga, setHarga] = useState("");
   const [hari, setHari] = useState("");
+  const [seat, setSeat] = useState("");
+
+  const [jadwalArmada, setJadwalArmada] = useState("");
 
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -52,7 +57,8 @@ const OrderForm = () => {
   const setTransaksi = async () => {
     const unique_id = uuid();
     const small_id = unique_id.slice(0, 8);
-    const trans_id = "LAJUJAYA" + small_id.toUpperCase();
+    const small_id2 = unique_id.slice(0, 3);
+    const trans_id = "LAJUJAYA111" + small_id.toUpperCase() + small_id2.toUpperCase() ;
 
     if (
       nama === "" ||
@@ -61,7 +67,8 @@ const OrderForm = () => {
       rute === "" ||
       bank === "" ||
       tanggal === "" ||
-      harga === ""
+      harga === "" || 
+      seat === ""
     ) {
       Swal.fire({
         icon: "error",
@@ -85,6 +92,7 @@ const OrderForm = () => {
         },
         UserId: localStorage.getItem("userId"),
         JadwalDriverId: jadwal,
+        SeatId: seat,
         nama: nama,
         tanggal: tanggal,
         alamat: alamat,
@@ -127,7 +135,18 @@ const OrderForm = () => {
         setDataRute(responseAPI.data);
       })
       .catch((err) => {
-        console.log(err);
+
+      });
+  };
+
+  const fetchArmada = () => {
+    Axios.get("http://localhost:3050/armada/" + jadwalArmada.ArmadaId)
+      .then((result) => {
+        const responseAPI = result.data;
+        setDataArmada(responseAPI.data);
+      })
+      .catch((err) => {
+
       });
   };
 
@@ -138,7 +157,7 @@ const OrderForm = () => {
         setDataJam(responseAPI.data);
       })
       .catch((err) => {
-        console.log(err);
+
       });
   };
 
@@ -151,7 +170,7 @@ const OrderForm = () => {
         setHarga(ruteData.harga);
       })
       .catch((err) => {
-        console.log(err);
+
       });
   };
 
@@ -162,23 +181,38 @@ const OrderForm = () => {
         const jadwalDriver = responseAPI.data;
         console.log(jadwalDriver);
         setJadwal(jadwalDriver.id);
+        setJadwalArmada(jadwalDriver);
       })
       .catch((err) => {
-        console.log(err);
+
       });
   };
 
+  const fetchSeat = async () => {
+    if (jadwal === "" || tanggal === "") {
+      Swal.fire({
+        text: "Mohon isi Jadwal dan Rute terlebih dahulu!",
+        icon: "error",
+      });
+      return;
+    }
+    try {
+      const result = await Axios.get(
+        "http://localhost:3050/seat/" + jadwal + "/available?tanggal=" + tanggal
+      );
+      const responseAPI = result.data;
+      setDataSeat(responseAPI.data);
+      console.log(dataSeat);
+    } catch (err) {
+      // Handle the error here, if needed
+      console.error("Error fetching seat data:", err);
+    }
+  };
 
   useEffect(() => {
     fetchRute();
     fetchJam();
   }, []);
- 
-  console.log(hari);
-  console.log(tanggal);
-  console.log(rute);
-  console.log(jam);
-  console.log(jadwal);
 
   return (
     <>
@@ -271,6 +305,7 @@ const OrderForm = () => {
                         />
                       </div>
 
+                      
                       <div className="form-group col-md-6">
                         <label className="my-2 ms-2">Pilih Jam</label>
                         <select
@@ -290,6 +325,36 @@ const OrderForm = () => {
                             );
                           })}
                         </select>
+                      </div>
+
+                      <div className="form-group col-md-2">
+                        <label className="my-2 ms-2">Pilih Seat</label>
+                        <select
+                          id="jadwal"
+                          className="form-control bg-secondary text-white"
+                          onFocus={fetchSeat}
+                          onChange={(e) => {
+                            setSeat(e.target.value);
+                          }}
+                          onClick={fetchArmada}
+                        >
+                          <option>Seat Tersedia</option>
+                          {dataSeat.map((seat) => {
+                            return (
+                              <option key={seat.id} value={seat.id}>
+                                {seat.nomor}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+
+                      <div className="form-group col-md-4 mt-2">
+                      <small className="text-secondary my-4 ms-2">Silahkan cek posisi seat pada menu armada</small>
+                      </div>
+
+                      <div className="form-group col-md-4">
+                        <small className="text-secondary my-2 ms-2">Armada : {dataArmada.nama}</small>
                       </div>
 
                       <div className="form-group col-md-4">
